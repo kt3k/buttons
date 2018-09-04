@@ -6,7 +6,7 @@
 # kocha
 > Runs [kocha](https://npm.im/kocha) unit test
 
-    npx cross-env MONGODB=mongodb://localhost:27017/test-buttons-buckend npx kocha --require src/__tests__/helper.js "src/**/__tests__/*.js"
+    npx cross-env MONGODB=mongodb://localhost:27017/test-buttons-backend npx kocha --require src/__tests__/helper.js "src/**/__tests__/*.js"
 
 # kocha-wait
 > Runs kocha testing after some delay

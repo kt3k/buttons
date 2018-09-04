@@ -7,6 +7,9 @@ props:
 - name: id
   type: string
   desc: The id of the user
+- name: authId
+  type: string
+  desc: The id for authentication
 - name: displayId
   type: string
   desc: The id for display
