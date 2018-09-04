@@ -6,15 +6,15 @@ https://kt3k-buttons.netlify.com (WIP)
 
 [![CircleCI](https://circleci.com/gh/kt3k/buttons.svg?style=svg)](https://circleci.com/gh/kt3k/buttons)
 
-- JAMstack
+- JAMstack ( https://jamstack.org/ )
 - Now ( https://zeit.co/now )
 - Auth0 ( https://auth0.com/ )
 - MongoDB ( mlab, https://mlab.com/ )
 - DDD
-- capsid.js
+- capsid.js ( https://capsid.js.org/ )
 - SPA
-- bulbo
-- docker (for mongo dev)
+- bulbo ( https://github.com/kt3k/bulbo )
+- docker (for mongodb instance)
 
 # Models
 ## User < Entity
