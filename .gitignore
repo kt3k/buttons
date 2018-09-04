@@ -3,3 +3,6 @@
 
 # mongodb
 /mongo-data
+
+# build
+/build/domaindoc

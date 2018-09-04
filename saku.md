@@ -21,3 +21,5 @@
 
 # build
 > Builds static site
+
+    npx domaindoc build
