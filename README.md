@@ -12,6 +12,7 @@ https://buttons.kt3k.org
 - capsid.js
 - SPA
 - bulbo
+- docker (for mongo dev)
 
 # Models
 ## User < Entity
