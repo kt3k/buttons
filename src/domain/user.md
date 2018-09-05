@@ -10,6 +10,12 @@ props:
 - name: authId
   type: string
   desc: The id for authentication
+- name: picture
+  type: string
+  desc: The url of the picture of the user
+- name: authData
+  type: Object
+  desc: The raw data from Auth0
 - name: displayId
   type: string
   desc: The id for display

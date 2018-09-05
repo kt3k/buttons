@@ -1,24 +1,40 @@
-const { describe, it } = require("kocha");
-const assert = require("assert");
-const { User } = require("..");
+const { describe, it } = require("kocha")
+const assert = require("assert")
+const { User } = require("..")
 
-const repository = new User.Repository();
+const repository = new User.Repository()
 
 describe("UserRepository", () => {
   describe("save", () => {
     it("saves the user", async () => {
-      const mojombo = new User({
-        authId: "github|1",
-        displayId: "mojombo",
-        displayName: "Tom Preston-Werner",
-        buttons: []
-      });
+      await repository.save(
+        new User({
+          picture: "https://example.com/avatar.png",
+          authId: "github|123",
+          authData: {},
+          displayId: "foo",
+          displayName: "Buzz Foobar",
+          buttons: []
+        })
+      )
 
-      await repository.save(mojombo);
+      const user = await repository.getByAuthId("github|123")
 
-      const user = await repository.getByAuthId("github|1");
+      assert(user instanceof User)
+      assert.strictEqual(user.picture, "https://example.com/avatar.png")
+      assert.strictEqual(user.authId, "github|123")
+      assert.deepStrictEqual(user.authData, {})
+      assert(user.id != null)
+      assert.strictEqual(user.displayId, "foo")
+      assert.strictEqual(user.displayName, "Buzz Foobar")
+    })
+  })
 
-      assert(user instanceof User);
-    });
-  });
-});
+  describe("getByAuthId", () => {
+    it("resolves with null if the auth id does not exist", async () => {
+      const user = await repository.getByAuthId("github|999")
+
+      assert.equal(user, null)
+    })
+  })
+})
