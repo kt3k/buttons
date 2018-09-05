@@ -85,3 +85,41 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 ## DELETE /buttons/:id/checks/:id
 
 - Delete a check by the id
+
+# Use cases
+
+## Onboarding
+
+- Go to /
+- Auth0 login
+- Take displayId
+- Set up 1 - 4 buttons
+- Done
+
+## Push button
+
+- Go to / (loggedIn)
+- Push buttons
+- Done
+
+## Browse my checks
+
+- Go to /checks
+- Browse my checks
+- Done
+
+## Browse someone's checks
+
+- Go to /users
+- See the list of users
+- Select the name of a user
+- Go to /:user/checks
+- See :user's checks
+- Done
+
+## Modify my buttons
+
+- Go to /settings
+- Modify my buttons
+- Push save button
+- Done
