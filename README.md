@@ -15,26 +15,13 @@ https://kt3k-buttons.netlify.com (WIP)
 - SPA
 - bulbo ( https://github.com/kt3k/bulbo )
 - docker (for mongodb instance)
+- kocha (testing, mocha clone, https://github.com/kt3k/kocha )
+- power-assert ( assertion, https://github.com/power-assert-js/power-assert )
+- prettier + husky + lint-staged
 
 # Models
 
-[Domaindoc](https://kt3k-buttons.netlify.com/domaindoc/)
-
-## User < Entity
-- id: string
-- displayId: string
-- displayName: string
-- buttons: Button[]
-## Button < Entity
-- id: string
-- name: string
-- description: string
-- user: User
-## Check < Entity
-- id: string
-- date: Date
-- note: ?string
-- button: Button
+See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 # Urls
 
