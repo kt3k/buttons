@@ -1,6 +1,6 @@
 # buttons
 
-https://kt3k-buttons.netlify.com (WIP)
+https://kt3k-buttons.netlify.com (nothing yet)
 
 > Daily push buttons
 
@@ -13,12 +13,15 @@ https://kt3k-buttons.netlify.com (WIP)
 - MongoDB ( mlab, https://mlab.com/ )
 - DDD
 - capsid.js ( https://capsid.js.org/ )
-- SPA
 - bulbo ( https://github.com/kt3k/bulbo )
-- docker (for mongodb instance)
+- SPA
+- docker (for mongodb preparation)
 - kocha (testing, mocha clone, https://github.com/kt3k/kocha )
 - power-assert ( assertion, https://github.com/power-assert-js/power-assert )
+- nyc ( https://github.com/istanbuljs/nyc )
 - prettier + husky + lint-staged
+- CircleCI ( https://circleci.com/ )
+- Codecov ( https://codecov.io/ )
 
 # Models
 
