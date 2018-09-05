@@ -23,3 +23,4 @@
 > Builds static site
 
     npx domaindoc build
+    npx bulbo build
