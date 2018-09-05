@@ -5,6 +5,7 @@ https://kt3k-buttons.netlify.com (WIP)
 > Daily push buttons
 
 [![CircleCI](https://circleci.com/gh/kt3k/buttons.svg?style=svg)](https://circleci.com/gh/kt3k/buttons)
+[![codecov](https://codecov.io/gh/kt3k/buttons/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/buttons)
 
 - JAMstack ( https://jamstack.org/ )
 - Now ( https://zeit.co/now )
