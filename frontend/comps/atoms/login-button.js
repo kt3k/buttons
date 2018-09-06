@@ -6,9 +6,8 @@ class LoginButton {
   constructor() {
     this.webAuth = new auth0.WebAuth({
       domain: 'kt3k.auth0.com',
-      clientID: 'N5Z4ejXozo7FhoLz8OqaZitUElNbTqqQ',
+      clientID: 'QLqktKiyNtfN3izRtkrfOB4UCG49a4V1',
       responseType: 'token id_token',
-      audience: 'https://kt3k.auth0.com/userinfo',
       scope: 'openid',
       redirectUri: window.location.href
     })
