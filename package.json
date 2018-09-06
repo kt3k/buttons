@@ -39,6 +39,7 @@
     "codecov": "^3.1.0",
     "cross-env": "^5.2.0",
     "domaindoc": "^3.0.3",
+    "evex": "^1.6.1",
     "gulp-nunjucks-render": "^2.2.2",
     "husky": "^0.14.3",
     "kocha": "^1.9.1",

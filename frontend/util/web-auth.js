@@ -7,3 +7,10 @@ module.exports = new auth0.WebAuth({
   scope: 'openid',
   redirectUri: window.location.href + 'callback.html'
 })
+
+module.exports.isAuthenticated = () => {
+  // Check whether the current time is past the
+  // Access Token's expiry time
+  const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
+  return new Date().getTime() < expiresAt
+}
