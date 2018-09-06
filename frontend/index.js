@@ -1,1 +1,1 @@
-require('./comps/atoms/login-button')
+require('./comps')

@@ -7,7 +7,7 @@ const bundle = require('bundle-through')
 const src = 'frontend'
 
 const paths = {
-  index: `${src}/index.html`,
+  html: `${src}/*.html`,
   css: `${src}/css/**/*.css`,
   js: {
     entrypoint: `${src}/index.js`,
@@ -22,6 +22,6 @@ asset(paths.js.entrypoint)
   .watch(paths.js.src)
   .pipe(bundle({ transform: 'babelify' }))
 
-asset(paths.index).pipe(nunjucks({ basepath: process.env.BASEPATH || '' }))
+asset(paths.html).pipe(nunjucks({ basepath: process.env.BASEPATH || '' }))
 
 asset(paths.css)
