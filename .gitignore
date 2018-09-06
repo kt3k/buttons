@@ -5,7 +5,7 @@
 /mongo-data
 
 # build
-/build/domaindoc
+/build
 
 # nyc
 /coverage

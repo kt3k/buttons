@@ -26,9 +26,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "auth0-js": "^9.7.3",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-power-assert": "^3.0.0",
+    "babelify": "^10.0.0-beta.1",
     "bulbo": "^7.0.0",
+    "bundle-through": "^1.0.3",
     "capsid": "^0.27.2",
     "codecov": "^3.1.0",
     "cross-env": "^5.2.0",
@@ -45,7 +51,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --no-semi --write",
+      "prettier --no-semi --single-quote --write",
       "git add"
     ]
   },
