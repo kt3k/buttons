@@ -1,5 +1,6 @@
-exports.User = require("./user");
-exports.User.Repository = require("./user-repository");
-exports.Check = require("./check");
-exports.Button = require("./button");
-exports.Button.Repository = require("./button-repository");
+exports.User = require('./user')
+exports.User.Repository = require('./user-repository')
+exports.User.InitService = require('./user-init-service')
+exports.Check = require('./check')
+exports.Button = require('./button')
+exports.Button.Repository = require('./button-repository')
