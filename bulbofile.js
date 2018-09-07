@@ -20,7 +20,7 @@ bulbo.base(src)
 
 asset(paths.js.entrypoint)
   .watch(paths.js.src)
-  .pipe(bundle({ transform: 'babelify' }))
+  .pipe(bundle({ transform: [['envify', { global: true }], 'babelify'] }))
 
 asset(paths.html).pipe(nunjucks({ basepath: process.env.BASEPATH || '' }))
 

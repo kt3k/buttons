@@ -46,7 +46,7 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 # APIs
 
-## GET /users/me - auth
+## GET /users/self - auth
 
 - Get the authenticated user
 

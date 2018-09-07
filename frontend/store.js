@@ -8,13 +8,14 @@ const { isAuthenticated } = require('./util/web-auth')
  */
 @component('app-store')
 @store({
-  modules: []
+  modules: [require('./modules/user')]
 })
 class Store {
-  @dispatches(Action.STORE_READY)
-  __mount__() {}
+  __mount__() {
+    this.main()
+  }
 
-  @action(Action.STORE_READY)
+  @dispatches(Action.REQUEST_SELF)
   main() {
     console.log(isAuthenticated())
   }

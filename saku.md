@@ -24,3 +24,13 @@
 
     npx domaindoc build
     npx bulbo build
+
+# serve-site
+> Serves the static site (for local dev)
+
+    npx cross-env API_ROOT=http://localhost:3000 npx bulbo
+
+# serve-api
+> Serves the api (for local dev)
+
+    npx cross-env PORT=3000 ALLOW_ORIGIN=http://localhost:7100 node src/index.js
