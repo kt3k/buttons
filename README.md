@@ -31,8 +31,8 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 ## / - auth/public
 
-- auth: Your buttons
-- no auth: Login/Sign up link and list of calendars of people
+- auth: Your buttons, Your checks
+- no auth: Login/Sign up link and list of the users
 
 ## /:user - public
 
@@ -45,6 +45,10 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 - The settings of buttons
 
 # APIs
+
+## GET /users/me - auth
+
+- Get the authenticated user
 
 ## GET /users - noauth
 

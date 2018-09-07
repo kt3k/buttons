@@ -4,6 +4,7 @@ module.exports = new auth0.WebAuth({
   domain: 'kt3k.auth0.com',
   clientID: 'QLqktKiyNtfN3izRtkrfOB4UCG49a4V1',
   responseType: 'token id_token',
+  audience: 'https://buttons-backend.now.sh/',
   scope: 'openid',
   redirectUri: window.location.href + 'callback.html'
 })
