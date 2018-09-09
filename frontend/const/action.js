@@ -1,3 +1,2 @@
-exports.STORE_READY = 'btns/store/READY'
-exports.REQUEST_SELF = 'btns/self/REQUEST'
-exports.SELF_READY = 'btns/self/READY'
+exports.REQUEST_AUTH = 'btns/auth/REQUEST'
+exports.AUTH_READY = 'btns/auth/READY'
