@@ -42,7 +42,15 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 ## /settings - auth
 
-- The settings of buttons
+- The settings of profile and buttons
+
+## /set-id.html - auth
+
+- The settings of displayId on onboarding steps
+
+## /set-buttons.html - auth
+
+- The settings of buttons on onboarding steps
 
 # APIs
 
@@ -100,8 +108,11 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 - Go to /
 - Auth0 login
+- Go to /set-id.html
 - Take displayId
+- Go to /set-buttons.html
 - Set up 1 - 4 buttons
+- Go to /
 - Done
 
 ## Push button
@@ -127,7 +138,7 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 ## Modify my buttons
 
-- Go to /settings
+- Go to /set-buttons.html
 - Modify my buttons
 - Push save button
 - Done
