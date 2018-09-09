@@ -34,3 +34,8 @@
 > Serves the api (for local dev)
 
     npx cross-env PORT=3000 ALLOW_ORIGIN=http://localhost:7100 MONGODB=mongodb://localhost:27017/buttons-backend node src/index.js
+
+# deploy
+> Deploys the server to zeit now
+
+    now --public -e PORT=80 -e ALLOW_ORIGIN=https://kt3k-buttons.netlify.com -e MONGODB=@buttons-mongodb

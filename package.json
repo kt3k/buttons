@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "saku test",
-    "build": "saku build",
-    "precommit": "lint-staged"
+    "build-for-netlify": "cross-env API_ROOT=https://buttons-backend.now.sh saku build",
+    "precommit": "lint-staged",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
