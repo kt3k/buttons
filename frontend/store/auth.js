@@ -22,6 +22,17 @@ class UserModule {
       'get',
       `/users/self?i=${localStorage.id_token}`
     )
+
+    if (self.displayId == null) {
+      location.href = '/set-id.html' // TODO: use basepath variable
+      return
+    }
+
+    if (self.buttons == null || self.buttons.length === 0) {
+      location.href = '/set-buttons.html' // TODO: use basepath variable
+      return
+    }
+
     return self
   }
 }
