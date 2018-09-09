@@ -15,8 +15,7 @@ class LoginButton {
       this.el.style.display = ''
     } else if (self.displayId == null) {
       location.href = '/set-id.html' // TODO: use basepath variable
-    }
-    {
+    } else {
       this.el.style.display = 'none' // logged in
     }
   }
