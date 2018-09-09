@@ -50,6 +50,10 @@ See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
 
 - Get the authenticated user
 
+## PUT /users/self/set-id - auth
+
+- Sets the display
+
 ## GET /users - noauth
 
 - Get the users
