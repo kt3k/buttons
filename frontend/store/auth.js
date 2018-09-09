@@ -18,7 +18,11 @@ class UserModule {
       return null
     }
 
-    return await api('get', `/users/self?i=${localStorage.id_token}`)
+    const { data: self } = await api(
+      'get',
+      `/users/self?i=${localStorage.id_token}`
+    )
+    return self
   }
 }
 

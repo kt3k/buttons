@@ -28,6 +28,17 @@ describe('UserRepository', () => {
       assert.strictEqual(user.displayId, 'foo')
       assert.strictEqual(user.displayName, 'Buzz Foobar')
     })
+
+    it('updates the existing user', async () => {
+      const user0 = await repository.getByAuthId('github|123')
+
+      user0.displayName = 'Fizz Boofar'
+
+      await repository.save(user0)
+
+      const user1 = await repository.getByAuthId('github|123')
+      assert.strictEqual(user1.displayName, 'Fizz Boofar')
+    })
   })
 
   describe('getByAuthId', () => {

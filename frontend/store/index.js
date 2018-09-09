@@ -14,8 +14,8 @@ class Store {
   __mount__() {}
 
   @action(Action.AUTH_READY)
-  @notifies(Action.AUTH_READY, 'auth-observer')
-  authReady({ detail: self }) {
+  @notifies(Action.AUTH_READY, '.auth-observer')
+  authReady(store, { detail: self }) {
     return self
   }
 }

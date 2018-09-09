@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const User = require("./user")
+const mongoose = require('mongoose')
+const User = require('./user')
 
 const userSchema = new mongoose.Schema({
   picture: String,
@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   buttonIds: [String]
 })
 
-const UserODM = mongoose.model("User", userSchema)
+const UserODM = mongoose.model('User', userSchema)
 
 class UserRepository {
   /**
@@ -18,15 +18,27 @@ class UserRepository {
    * @param {User} user
    */
   save(user) {
-    return new UserODM({
-      _id: user.id,
-      picture: user.picture,
-      authId: user.authId,
-      authData: JSON.stringify(user.authData),
-      displayId: user.displayId,
-      displayName: user.displayName,
-      buttonIds: user.buttons.map(button => button.id)
-    }).save()
+    return new Promise((resolve, reject) => {
+      UserODM.findOneAndUpdate(
+        { authId: user.authId },
+        {
+          picture: user.picture,
+          authId: user.authId,
+          authData: JSON.stringify(user.authData),
+          displayId: user.displayId,
+          displayName: user.displayName,
+          buttonIds: user.buttons.map(button => button.id)
+        },
+        { upsert: true },
+        (err, doc) => {
+          if (err) {
+            reject(err)
+            return
+          }
+          resolve()
+        }
+      )
+    })
   }
 
   async getByAuthId(authId) {
