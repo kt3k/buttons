@@ -5,7 +5,7 @@ module.exports = new auth0.WebAuth({
   clientID: 'QLqktKiyNtfN3izRtkrfOB4UCG49a4V1',
   responseType: 'token id_token',
   audience: 'https://buttons-backend.now.sh/',
-  scope: 'openid',
+  scope: 'openid profile',
   redirectUri: window.location.href + 'callback.html'
 })
 
