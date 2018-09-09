@@ -1,6 +1,6 @@
 # buttons
 
-https://kt3k-buttons.netlify.com (nothing yet)
+https://buttons.kt3k.org/ (nothing yet)
 
 > Daily push buttons
 
