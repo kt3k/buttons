@@ -14,6 +14,11 @@
     sleep 10
     saku kocha
 
+# start
+> Starts the local dev env
+
+    saku -p -r serve-api serve-site
+
 # mongo
 > Prepares mongodb for testing
 
@@ -38,4 +43,4 @@
 # deploy
 > Deploys the server to zeit now
 
-    now --public -e PORT=80 -e ALLOW_ORIGIN=https://kt3k-buttons.netlify.com -e MONGODB=@buttons-mongodb
+    now --public

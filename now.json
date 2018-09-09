@@ -1,0 +1,9 @@
+{
+  "name": "buttons-backend",
+  "alias": "buttons-backend",
+  "env": {
+    "MONGODB": "@buttons-mongodb",
+    "ALLOW_ORIGIN": "https://buttons.kt3k.org",
+    "PORT": "80"
+  }
+}
