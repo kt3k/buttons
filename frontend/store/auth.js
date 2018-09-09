@@ -18,11 +18,7 @@ class UserModule {
       return null
     }
 
-    const decoded = verifier.decode(localStorage.id_token)
-
-    console.log(decoded)
-
-    return await api('get', '/users/self')
+    return await api('get', `/users/self?i=${localStorage.id_token}`)
   }
 }
 

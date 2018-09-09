@@ -33,4 +33,4 @@
 # serve-api
 > Serves the api (for local dev)
 
-    npx cross-env PORT=3000 ALLOW_ORIGIN=http://localhost:7100 node src/index.js
+    npx cross-env PORT=3000 ALLOW_ORIGIN=http://localhost:7100 MONGODB=mongodb://localhost:27017/buttons-backend node src/index.js
