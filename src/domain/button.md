@@ -13,7 +13,7 @@ props:
 - name: description
   type: string
   desc: The description of the button
-- name: user
-  type: User
-  desc: The owner user of the button
+- name: userId
+  type: string
+  desc: The id of the owner user of the button
 ---
