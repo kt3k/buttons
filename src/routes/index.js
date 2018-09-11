@@ -1,11 +1,21 @@
 const { checkJwt } = require('../util/jwt')
 const { corsOk, allowMethods, ok } = require('../util/routes')
+const { handleApiError } = require('../util/api')
+const { User } = require('../domain')
+
+const services = {
+  userInitService: new User.InitService()
+}
 
 module.exports = app => {
   app.use(corsOk)
 
   app.options('/users/self', allowMethods('GET'), ok)
-  app.get('/users/self', checkJwt, require('./users-self'))
+  app.get(
+    '/users/self',
+    checkJwt,
+    handleApiError(require('./users-self')(services))
+  )
 
   app.options('/users/self/id', allowMethods('PUT'), ok)
   app.put('/users/self/id', checkJwt, require('./users-self-id'))

@@ -1,29 +1,26 @@
 const { User } = require('../domain')
+const { ApiError } = require('../util/api')
 const jwt = require('jsonwebtoken')
 
-const service = new User.InitService()
-
-module.exports = async (req, res) => {
+module.exports = ({ userInitService }) => async (req, res) => {
   const idToken = req.query.i
+  const authId = req.user.sub
 
   if (!idToken) {
-    res.status(400).json({ message: 'Bad request, i= query param missing' })
-    return
+    throw new ApiError('Bad request, i= query param missing', 400, 400)
   }
 
   const authData = jwt.decode(idToken) // TODO: Use /userinfo api (auth0) for getting user profile
 
   if (!authData) {
-    res.status(400).json({ message: 'Bad request, invalid jwt token' })
-    return
+    throw new ApiError('Bad request, invalid jwt token', 400, 400)
   }
 
-  try {
-    const user = await service.getOrCreate(authData)
-
-    res.status(200).json(user)
-  } catch (e) {
-    console.log(e)
-    res.status(500).json({ message: 'Internal Server Error' })
+  if (authData.sub !== authId) {
+    throw new ApiError('Bad request, invalid id_token', 400, 400)
   }
+
+  const user = await userInitService.getOrCreate(authData)
+
+  res.status(200).json(user)
 }

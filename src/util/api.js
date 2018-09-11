@@ -1,4 +1,4 @@
-class APIError extends Error {
+class ApiError extends Error {
   /**
    *
    * @param {string} message
@@ -13,7 +13,7 @@ class APIError extends Error {
   }
 }
 
-exports.APIError = APIError
+exports.ApiError = ApiError
 
 const CODE_INTERNAL_SERVER_ERROR = 1
 
@@ -23,11 +23,11 @@ const CODE_INTERNAL_SERVER_ERROR = 1
  * @param {HttpResponse} res
  * @return {Function}
  */
-exports.handleAPIError = handler => async (req, res) => {
+exports.handleApiError = handler => async (req, res) => {
   try {
     await handler(req, res)
   } catch (e) {
-    if (e instanceof APIError) {
+    if (e instanceof ApiError) {
       res.status(e.status).json({
         message: e.message,
         code: e.code
