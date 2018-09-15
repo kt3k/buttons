@@ -26,6 +26,26 @@ describe('UserButtonService', () => {
   })
 
   describe('deleteById', () => {
-    it('deletes the button for the user by the given id', () => {})
+    it('deletes the button for the user by the given id', async () => {
+      const user = await userRepository.getByAuthId('github|123')
+
+      await service.createButton(user, {
+        name: 'notebook',
+        description: 'Buy a notebook'
+      })
+
+      const user1 = await userRepository.getByAuthId('github|123')
+
+      const lastButton = user1.buttons[user1.buttons.length - 1]
+
+      assert.strictEqual(lastButton.name, 'notebook')
+
+      await service.deleteById(user1, lastButton.id)
+
+      const user2 = await userRepository.getByAuthId('github|123')
+
+      // notebook button is deleted
+      assert(user2.buttons.every(button => button.name !== 'notebook'))
+    })
   })
 })

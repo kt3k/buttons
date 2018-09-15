@@ -30,7 +30,7 @@ class UserButtonService {
    * Deletes the button by id.
    */
   async deleteById(user, buttonId) {
-    user.buttons = button.filter(button => button.id != buttonId)
+    user.buttons = user.buttons.filter(button => button.id != buttonId)
 
     await userRepository.save(user)
   }
