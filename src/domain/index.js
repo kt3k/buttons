@@ -1,6 +1,7 @@
 exports.User = require('./user')
 exports.User.Repository = require('./user-repository')
 exports.User.InitService = require('./user-init-service')
+exports.User.ButtonService = require('./user-button-service')
 exports.Check = require('./check')
 exports.Button = require('./button')
 exports.Button.Repository = require('./button-repository')

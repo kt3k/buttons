@@ -1,3 +1,3 @@
-exports.put = (req, res) => {}
+exports.put = ({ buttonRepository }) => (req, res) => {}
 
-exports.delete = (req, res) => {}
+exports.delete = ({ userRepository }) => (req, res) => {}

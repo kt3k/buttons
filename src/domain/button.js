@@ -2,12 +2,12 @@
  * The button model
  */
 class Button {
-  constructor({ id, name, description, user }) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.user = user;
+  constructor({ id, name, description, userId }) {
+    this.id = id
+    this.name = name
+    this.description = description
+    this.userId = userId
   }
 }
 
-module.exports = Button;
+module.exports = Button

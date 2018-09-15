@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = require('./user')
+const ButtonRepository = require('./button-repository')
 
 const userSchema = new mongoose.Schema({
   picture: String,
@@ -9,6 +10,8 @@ const userSchema = new mongoose.Schema({
   displayName: String,
   buttonIds: [String]
 })
+
+const buttonRepository = new ButtonRepository()
 
 const UserODM = mongoose.model('User', userSchema)
 
@@ -56,6 +59,8 @@ class UserRepository {
       // pass
     }
 
+    const buttons = await buttonRepository.getByIds(userObj.buttonIds)
+
     return new User({
       id: userObj._id,
       picture: userObj.picture,
@@ -63,7 +68,7 @@ class UserRepository {
       authData,
       displayId: userObj.displayId,
       displayName: userObj.displayName,
-      buttons: [] // TODO: Find buttons
+      buttons
     })
   }
 }

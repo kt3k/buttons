@@ -1,10 +1,13 @@
 const { checkJwt } = require('../util/jwt')
 const { corsOk, allowMethods, ok } = require('../util/routes')
 const { handleApiError } = require('../util/api')
-const { User } = require('../domain')
+const { User, Button } = require('../domain')
 
 const services = {
-  userInitService: new User.InitService()
+  userRepository: new User.Repository(),
+  userInitService: new User.InitService(),
+  userButtonService: new User.ButtonService(),
+  buttonRepository: new Button.Repository()
 }
 
 module.exports = app => {
@@ -22,12 +25,16 @@ module.exports = app => {
 
   app.options('/users/self/buttons', allowMethods('POST,GET'), ok)
   // get my buttons
-  app.get('/users/self/buttons', checkJwt, require('./users-self-buttons').get)
+  app.get(
+    '/users/self/buttons',
+    checkJwt,
+    handleApiError(require('./users-self-buttons').get(services))
+  )
   // create a button
   app.post(
     '/users/self/buttons',
     checkJwt,
-    require('./users-self-buttons').post
+    handleApiError(require('./users-self-buttons').post(services))
   )
 
   app.options('/users/self/buttons/:id', allowMethods('PUT,DELETE'), ok)
@@ -35,12 +42,12 @@ module.exports = app => {
   app.put(
     '/users/self/buttons/:id',
     checkJwt,
-    require('./users-self-buttons-id').put
+    handleApiError(require('./users-self-buttons-id').put(services))
   )
   // delete the button
   app.delete(
     '/users/self/buttons/:id',
     checkJwt,
-    require('./users-self-buttons-id').delete
+    handleApiError(require('./users-self-buttons-id').delete(sevices))
   )
 }
