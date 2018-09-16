@@ -48,4 +48,19 @@ describe('UserRepository', () => {
       assert.equal(user, null)
     })
   })
+
+  describe('getByDisplayId', () => {
+    it('resolves with the user of the given display id', async () => {
+      const user = await repository.getByDisplayId('foo')
+
+      assert(user instanceof User)
+      assert.strictEqual(user.authId, 'github|123')
+    })
+
+    it('resolves with null if the auth id does not exist', async () => {
+      const user = await repository.getByDisplayId('non-existent')
+
+      assert.equal(user, null)
+    })
+  })
 })

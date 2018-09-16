@@ -1,17 +1,28 @@
 const { User } = require('../domain')
+const { ApiError } = require('../util/api')
 
-const repository = new User.Repository()
-
-module.exports = async (req, res) => {
+/**
+ * Sets the user's id.
+ */
+exports.put = ({ userRepository }) => async (req, res) => {
   const authId = req.user.sub
-
-  const user = await repository.getByAuthId(authId)
-
   const newId = req.body.id
+
+  if (!newId) {
+    throw new ApiError('The id parameter is missing', 400, 400)
+  }
+
+  const existingUser = await userRepository.getByDisplayId(newId)
+
+  if (existingUser != null) {
+    throw new ApiError(`The id is unavailable: ${newId}`, 400, 400)
+  }
+
+  const user = await userRepository.getByAuthId(authId)
 
   user.displayId = newId
 
-  await repository.save(user)
+  await userRepository.save(user)
 
   res.status(200).json({ message: 'ok' })
 }

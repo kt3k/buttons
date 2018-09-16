@@ -47,6 +47,16 @@ class UserRepository {
   async getByAuthId(authId) {
     const userObj = await UserODM.findOne({ authId }).exec()
 
+    return this.userObjToUser(userObj)
+  }
+
+  async getByDisplayId(displayId) {
+    const userObj = await UserODM.findOne({ displayId }).exec()
+
+    return this.userObjToUser(userObj)
+  }
+
+  async userObjToUser(userObj) {
     if (userObj == null) {
       return null
     }

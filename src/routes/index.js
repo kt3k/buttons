@@ -21,7 +21,11 @@ module.exports = app => {
   )
 
   app.options('/users/self/id', allowMethods('PUT'), ok)
-  app.put('/users/self/id', checkJwt, require('./users-self-id'))
+  app.put(
+    '/users/self/id',
+    checkJwt,
+    handleApiError(require('./users-self-id').put(services))
+  )
 
   app.options('/users/self/buttons', allowMethods('POST,GET'), ok)
   // get my buttons
