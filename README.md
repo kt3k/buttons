@@ -23,9 +23,41 @@ https://buttons.kt3k.org/ (nothing yet)
 - CircleCI ( https://circleci.com/ )
 - Codecov ( https://codecov.io/ )
 
-# Models
+# Domain Models
 
 See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
+
+# Development
+
+## Unit test
+
+Start mongo in a terminal:
+
+```
+saku mongo
+```
+
+Then in a different console, run tests:
+
+```
+saku kocha
+```
+
+## Start local server
+
+Start mongo:
+
+```
+saku mongo
+```
+
+Then in a different console, run the server:
+
+```
+saku start
+```
+
+This runs local static site and lcoal api server.
 
 # Urls
 
