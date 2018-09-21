@@ -20,7 +20,7 @@ class UserRepository {
    * Saves the user.
    * @param {User} user
    */
-  save(user) {
+  save (user) {
     return new Promise((resolve, reject) => {
       UserODM.findOneAndUpdate(
         { authId: user.authId },
@@ -44,19 +44,19 @@ class UserRepository {
     })
   }
 
-  async getByAuthId(authId) {
+  async getByAuthId (authId) {
     const userObj = await UserODM.findOne({ authId }).exec()
 
     return this.userObjToUser(userObj)
   }
 
-  async getByDisplayId(displayId) {
+  async getByDisplayId (displayId) {
     const userObj = await UserODM.findOne({ displayId }).exec()
 
     return this.userObjToUser(userObj)
   }
 
-  async userObjToUser(userObj) {
+  async userObjToUser (userObj) {
     if (userObj == null) {
       return null
     }

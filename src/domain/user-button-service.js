@@ -13,7 +13,7 @@ class UserButtonService {
   /**
    * Creates a button for the given user with the given info.
    */
-  async createButton(user, buttonObj) {
+  async createButton (user, buttonObj) {
     const button = new Button(buttonObj)
     button.id = mongoose.Types.ObjectId().toString()
     button.userId = user.id
@@ -28,9 +28,11 @@ class UserButtonService {
 
   /**
    * Deletes the button by id.
+   * @param {User} user The user
+   * @param {string} buttonId
    */
-  async deleteById(user, buttonId) {
-    user.buttons = user.buttons.filter(button => button.id != buttonId)
+  async deleteById (user, buttonId) {
+    user.buttons = user.buttons.filter(button => button.id !== buttonId)
 
     await userRepository.save(user)
   }

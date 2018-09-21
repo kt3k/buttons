@@ -4,10 +4,10 @@ const { component, on, wired } = require('capsid')
 @component('set-id-panel')
 class SetIdPanel {
   @wired('input')
-  get input() {}
+  get input () {}
 
   @on.click.at('button')
-  async requestApi() {
+  async requestApi () {
     const value = this.input.value
 
     if (!value) {
@@ -16,7 +16,7 @@ class SetIdPanel {
     }
 
     try {
-      const data = await api('put', '/users/self/id', { id: this.input.value })
+      await api('put', '/users/self/id', { id: this.input.value })
       alert('ok!')
       location.href = '/'
     } catch (e) {

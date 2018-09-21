@@ -14,7 +14,7 @@ class ButtonRepository {
   /**
    * @param {Button} button
    */
-  async save(button) {
+  async save (button) {
     await new Promise((resolve, reject) => {
       ButtonODM.findOneAndUpdate(
         { _id: mongoose.Types.ObjectId(button.id) },
@@ -40,7 +40,7 @@ class ButtonRepository {
    * @param {string[]} ids
    * @return {Promise<Button[]>}
    */
-  async getByIds(ids) {
+  async getByIds (ids) {
     const buttonArray = await ButtonODM.find({
       _id: { $in: ids.map(mongoose.Types.ObjectId) }
     })
@@ -48,7 +48,7 @@ class ButtonRepository {
     return buttonArray.map(this.constructor.buttonObjToButton)
   }
 
-  static buttonObjToButton(buttonObj) {
+  static buttonObjToButton (buttonObj) {
     return new Button({
       id: buttonObj._id.toString(),
       name: buttonObj.name,

@@ -1,4 +1,3 @@
-const { User } = require('../domain')
 const { ApiError } = require('../util/api')
 const jwt = require('jsonwebtoken')
 

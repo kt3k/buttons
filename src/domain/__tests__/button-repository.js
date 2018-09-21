@@ -1,6 +1,6 @@
 const { describe, it } = require('kocha')
 const assert = require('assert')
-const { Button, User } = require('..')
+const { Button } = require('..')
 const mongoose = require('mongoose')
 
 const repository = new Button.Repository()

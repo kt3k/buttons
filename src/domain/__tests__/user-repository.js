@@ -45,7 +45,7 @@ describe('UserRepository', () => {
     it('resolves with null if the auth id does not exist', async () => {
       const user = await repository.getByAuthId('github|999')
 
-      assert.equal(user, null)
+      assert.strictEqual(user, null)
     })
   })
 
@@ -60,7 +60,7 @@ describe('UserRepository', () => {
     it('resolves with null if the auth id does not exist', async () => {
       const user = await repository.getByDisplayId('non-existent')
 
-      assert.equal(user, null)
+      assert.strictEqual(user, null)
     })
   })
 })

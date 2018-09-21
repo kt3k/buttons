@@ -25,7 +25,7 @@ describe('GET /users/self', () => {
     req.user = { sub: '1234567890' }
 
     const userInitService = {
-      async getOrCreate(authData) {
+      async getOrCreate (authData) {
         return authData
       }
     }
@@ -48,7 +48,7 @@ describe('GET /users/self', () => {
     req.user = { sub: '1234567890' }
 
     const userInitService = {
-      async getOrCreate(authData) {
+      async getOrCreate (authData) {
         return authData
       }
     }
@@ -70,7 +70,7 @@ describe('GET /users/self', () => {
     req.user = { sub: '1234567890' }
 
     const userInitService = {
-      async getOrCreate(authData) {
+      async getOrCreate (authData) {
         return authData
       }
     }
@@ -91,7 +91,7 @@ describe('GET /users/self', () => {
     req.user = { sub: '1234567890a' }
 
     const userInitService = {
-      async getOrCreate(authData) {
+      async getOrCreate (authData) {
         return authData
       }
     }

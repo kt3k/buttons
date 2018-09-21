@@ -9,7 +9,7 @@ class UserInitService {
    * @param {Object} authData The data from auth0 id_token
    * @return {Promise<User>}
    */
-  async getOrCreate(authData) {
+  async getOrCreate (authData) {
     if (!authData || !authData.sub) {
       throw new Error('authData.sub is not defined')
     }
@@ -23,7 +23,7 @@ class UserInitService {
     return this.createUser(authData)
   }
 
-  async createUser(authData) {
+  async createUser (authData) {
     const authId = authData.sub
     const user = new User({
       picture: authData.picture,

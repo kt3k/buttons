@@ -52,6 +52,6 @@ module.exports = app => {
   app.delete(
     '/users/self/buttons/:id',
     checkJwt,
-    handleApiError(require('./users-self-buttons-id').delete(sevices))
+    handleApiError(require('./users-self-buttons-id').delete(services))
   )
 }

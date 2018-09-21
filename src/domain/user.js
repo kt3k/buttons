@@ -2,7 +2,7 @@
  * The user model
  */
 class User {
-  constructor({
+  constructor ({
     id,
     picture,
     authId,

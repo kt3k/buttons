@@ -5,7 +5,7 @@ class ApiError extends Error {
    * @param {number} code
    * @param {number} status
    */
-  constructor(message, code, status) {
+  constructor (message, code, status) {
     super(message)
 
     this.code = code

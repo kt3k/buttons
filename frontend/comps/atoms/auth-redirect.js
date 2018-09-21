@@ -3,7 +3,7 @@ const webAuth = require('../../util/web-auth')
 
 @component('auth-redirect')
 class AuthRedirect {
-  __mount__() {
+  __mount__ () {
     webAuth.parseHash((err, authResult) => {
       if (err) {
         console.log(err)
@@ -34,3 +34,5 @@ const setSession = authResult => {
   localStorage.setItem('id_token', authResult.idToken)
   localStorage.setItem('expires_at', expiresAt)
 }
+
+module.exports = AuthRedirect

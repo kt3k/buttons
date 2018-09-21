@@ -4,12 +4,12 @@ const { Action } = require('../../const')
 
 @component('login-button')
 class LoginButton {
-  __mount__() {
+  __mount__ () {
     this.el.classList.add('auth-observer')
   }
 
   @on(Action.AUTH_READY)
-  update({ detail: self }) {
+  update ({ detail: self }) {
     console.log(self)
     if (!self) {
       this.el.style.display = ''
@@ -19,7 +19,7 @@ class LoginButton {
   }
 
   @on.click
-  onClick(e) {
+  onClick (e) {
     e.preventDefault()
 
     webAuth.authorize()

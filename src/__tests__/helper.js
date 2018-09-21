@@ -2,7 +2,6 @@ require('@babel/register')
 
 const { before, after } = require('kocha')
 const db = require('../util/db')
-const mongoose = require('mongoose')
 
 const dbUrl = process.env.MONGODB
 const isTestDatabase = () => /test-buttons-backend/.test(dbUrl)
