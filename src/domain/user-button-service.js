@@ -12,6 +12,8 @@ const buttonRepository = new ButtonRepository()
 class UserButtonService {
   /**
    * Creates a button for the given user with the given info.
+   * @param {User} user
+   * @param {Object} buttonObj
    */
   async createButton (user, buttonObj) {
     const button = new Button(buttonObj)
@@ -24,6 +26,10 @@ class UserButtonService {
       buttonRepository.save(button),
       userRepository.save(user)
     ])
+
+    const [button0] = await buttonRepository.getByIds([button.id])
+
+    return button0
   }
 
   /**

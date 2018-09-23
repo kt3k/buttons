@@ -47,6 +47,7 @@
     "domaindoc": "^3.0.3",
     "envify": "^4.1.0",
     "evex": "^1.6.1",
+    "genel": "^1.1.1",
     "gulp-nunjucks-render": "^2.2.2",
     "husky": "^0.14.3",
     "idtoken-verifier": "^1.2.0",

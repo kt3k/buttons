@@ -36,6 +36,8 @@ exports.handleApiError = handler => async (req, res) => {
       return
     }
 
+    console.log(e)
+
     // TODO: Logs this error in an appropriate way
     res.status(503).json({
       message: 'Internal Server Error',

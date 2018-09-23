@@ -3142,6 +3142,10 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+genel@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/genel/-/genel-1.1.1.tgz#76f2096cf479d201e562a6c9def248694ececa0c"
+
 get-assigned-identifiers@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/get-assigned-identifiers/-/get-assigned-identifiers-1.2.0.tgz#6dbf411de648cbaf8d9169ebb0d2d576191e2ff1"
