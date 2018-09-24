@@ -21,6 +21,7 @@ describe('UserRepository', () => {
       const user = await repository.getByAuthId('github|56')
 
       assert(user instanceof User)
+      assert(typeof user.id === 'string')
       assert.strictEqual(user.picture, 'https://example.com/avatar.png')
       assert.strictEqual(user.authId, 'github|56')
       assert.deepStrictEqual(user.authData, {})

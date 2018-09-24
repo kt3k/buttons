@@ -72,7 +72,7 @@ class UserRepository {
     const buttons = await buttonRepository.getByIds(userObj.buttonIds)
 
     return new User({
-      id: userObj._id,
+      id: userObj._id.toString(),
       picture: userObj.picture,
       authId: userObj.authId,
       authData,
