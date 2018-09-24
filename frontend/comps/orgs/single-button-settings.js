@@ -9,6 +9,10 @@ class SingleButtonSettings {
   get nameInput () {}
   @wired('[name="description"]')
   get descriptionTextarea () {}
+  @wired('.save-button')
+  get saveButton () {}
+  @wired('.delete-button')
+  get deleteButton () {}
   __mount__ () {
     this.el.innerHTML = `
       <p><small class="button-id has-text-grey-light has-text-weight-bold is-italic"></small></p>
@@ -40,21 +44,36 @@ class SingleButtonSettings {
     this.userId = button.userId
   }
 
+  startLoading (el) {
+    el.classList.toggle('is-loading', true)
+  }
+
+  stopLoading (el) {
+    el.classList.toggle('is-loading', false)
+  }
+
   @on.click.at('.save-button')
   async onSave () {
+    this.startLoading(this.saveButton)
     await api('PUT', `/users/self/buttons/${this.id}`, {
       id: this.id,
       name: this.nameInput.value,
       description: this.descriptionTextarea.value,
       userId: this.userId
     })
+    this.stopLoading(this.saveButton)
   }
 
   @on.click.at('.delete-button')
   async onDelete () {
+    if (!confirm(`Are you sure you want to delete "${this.nameInput.value}"`)) {
+      return
+    }
+    this.startLoading(this.deleteButton)
     await api('DELETE', `/users/self/buttons/${this.id}`)
-    unmount('single-button-settings', this.el)
+    this.stopLoading(this.deleteButton)
     this.el.parentElement.removeChild(this.el)
+    unmount('single-button-settings', this.el)
   }
 }
 

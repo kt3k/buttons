@@ -9,6 +9,7 @@ const src = 'frontend'
 const paths = {
   html: `${src}/*.html`,
   css: `${src}/css/**/*.css`,
+  vendor: `${src}/vendor/**/*.*`,
   js: {
     entrypoint: `${src}/index.js`,
     src: `${src}/**/*.js`
@@ -25,3 +26,4 @@ asset(paths.js.entrypoint)
 asset(paths.html).pipe(nunjucks({ basepath: process.env.BASEPATH || '' }))
 
 asset(paths.css)
+asset(paths.vendor)
