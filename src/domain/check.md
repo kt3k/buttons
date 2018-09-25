@@ -8,7 +8,7 @@ props:
   type: string
   desc: The id of the user
 - name: date
-  type: Date
+  type: moment
   desc: The date of the check
 - name: note
   type: string
