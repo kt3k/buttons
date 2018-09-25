@@ -2,11 +2,11 @@
  * The check model.
  */
 class Check {
-  constructor ({ id, date, note, button }) {
+  constructor ({ id, date, note, buttonId }) {
     this.id = id
     this.date = date
     this.note = note
-    this.button = button
+    this.buttonId = buttonId
   }
 }
 

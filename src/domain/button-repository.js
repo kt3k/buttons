@@ -43,7 +43,7 @@ class ButtonRepository {
   async getByIds (ids) {
     const buttonArray = await ButtonODM.find({
       _id: { $in: ids.map(mongoose.Types.ObjectId) }
-    })
+    }).exec()
 
     return buttonArray.map(this.constructor.buttonObjToButton)
   }

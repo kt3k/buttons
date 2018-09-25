@@ -16,16 +16,18 @@ before(done => {
       throw new Error(`Cannot run tests against non test database: ${dbUrl}`)
     }
 
-    await new User.Repository().save(
-      new User({
-        picture: 'https://example.com/avatar.png',
-        authId: 'github|123',
-        authData: {},
-        displayId: 'foo',
-        displayName: 'Buzz Foobar',
-        buttons: []
-      })
-    )
+    const userRepository = new User.Repository()
+
+    const user = new User({
+      picture: 'https://example.com/avatar.png',
+      authId: 'github|123',
+      authData: {},
+      displayId: 'foo',
+      displayName: 'Buzz Foobar',
+      buttons: []
+    })
+
+    await userRepository.save(user)
 
     done()
   })
