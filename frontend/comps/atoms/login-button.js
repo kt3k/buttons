@@ -10,7 +10,6 @@ class LoginButton {
 
   @on(Action.AUTH_READY)
   update ({ detail: self }) {
-    console.log(self)
     if (!self) {
       this.el.style.display = ''
     } else {
