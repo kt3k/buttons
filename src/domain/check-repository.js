@@ -34,12 +34,14 @@ class CheckRepository {
    * @return {Promise<CheckCollection>}
    */
   async getByButtonIdsAndDate (buttonIds, date) {
+    /*
     const d = date.clone().startOf('day')
     const $gte = d.toDate()
     const $lt = d.add(1, 'days').toDate()
+    */
     const checkArray = await CheckODM.find({
       buttonId: { $in: buttonIds },
-      date: { $gte, $lt }
+      date: date.toDate()
     }).exec()
 
     return new CheckCollection(checkArray.map(this.constructor.checkObjToCheck))
@@ -77,6 +79,17 @@ class CheckRepository {
         }
       )
     })
+  }
+
+  /**
+   * @param {string} buttonId
+   * @param {moment} date
+   */
+  async deleteByButtonIdAndDate (buttonId, date) {
+    await CheckODM.findOneAndRemove({
+      date: date.toDate(),
+      buttonId
+    }).exec()
   }
 }
 
