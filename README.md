@@ -110,13 +110,13 @@ This runs local static site and lcoal api server.
 
 - Delete my button
 
-## POST /users/self/buttons/:id/push
+## POST /users/self/buttons/:id/check
 
-- Push a button (create a check of today)
+- Check the button
 
-## POST /users/self/buttons/:id/unpush
+## POST /users/self/buttons/:id/uncheck
 
-- Revert a button push
+- Uncheck the button push
 
 ## GET /users - noauth
 
