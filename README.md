@@ -90,9 +90,33 @@ This runs local static site and lcoal api server.
 
 - Get the authenticated user
 
-## PUT /users/self/set-id - auth
+## PUT /users/self/id - auth
 
 - Sets the display
+
+## GET /users/self/buttons - auth
+
+- Gets my buttons
+
+## POST /users/self/buttons - auth
+
+- Create a new button
+
+## PUT /users/self/buttons/:id - auth
+
+- Modify my button
+
+## DELETE /users/self/buttons/:id - auth
+
+- Delete my button
+
+## POST /users/self/buttons/:id/push
+
+- Push a button (create a check of today)
+
+## POST /users/self/buttons/:id/unpush
+
+- Revert a button push
 
 ## GET /users - noauth
 
@@ -113,18 +137,6 @@ This runs local static site and lcoal api server.
 ## GET /users/:user/checks/?d=YYYY-MM-DD
 
 - Get the user's check by the date
-
-## POST /buttons/:id/push
-
-- Push a button
-
-## PUT /buttons/:id
-
-- Modify a button
-
-## POST /buttons
-
-- Create a button
 
 ## PUT /buttons/:id/checks/:id
 
