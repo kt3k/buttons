@@ -1,13 +1,14 @@
 const { checkJwt } = require('../util/jwt')
 const { corsOk, allowMethods, ok } = require('../util/routes')
 const { handleApiError } = require('../util/api')
-const { User, Button } = require('../domain')
+const { User, Button, Check } = require('../domain')
 
 const services = {
   userRepository: new User.Repository(),
   userInitService: new User.InitService(),
   userButtonService: new User.ButtonService(),
-  buttonRepository: new Button.Repository()
+  buttonRepository: new Button.Repository(),
+  checkRepository: new Check.Repository()
 }
 
 module.exports = app => {
@@ -53,5 +54,19 @@ module.exports = app => {
     '/users/self/buttons/:id',
     checkJwt,
     handleApiError(require('./users-self-buttons-id').delete(services))
+  )
+
+  app.options('/users/self/buttons/:id/check', allowMethods('POST'), ok)
+  app.post(
+    '/users/self/buttons/:id/check',
+    checkJwt,
+    handleApiError(require('./users-self-buttons-id-check').check(services))
+  )
+
+  app.options('/users/self/buttons/:id/uncheck', allowMethods('POST'), ok)
+  app.post(
+    '/users/self/buttons/:id/uncheck',
+    checkJwt,
+    handleApiError(require('./users-self-buttons-id-check').uncheck(services))
   )
 }
