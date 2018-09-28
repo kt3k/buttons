@@ -27,6 +27,15 @@ class CheckCollection {
   getByButtonId (buttonId) {
     return this.checkMap[buttonId]
   }
+
+  /**
+   * Gets the check by the index.
+   * @param {number} index
+   * @return {Check}
+   */
+  get (index) {
+    return this.checks[index]
+  }
 }
 
 module.exports = CheckCollection

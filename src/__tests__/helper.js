@@ -17,6 +17,7 @@ before(done => {
     }
 
     const userRepository = new User.Repository()
+    const buttonService = new User.ButtonService()
 
     const user = new User({
       picture: 'https://example.com/avatar.png',
@@ -28,6 +29,12 @@ before(done => {
     })
 
     await userRepository.save(user)
+    const user0 = await userRepository.getByAuthId('github|123')
+
+    await buttonService.createButton(user0, {
+      name: 'Plants',
+      description: 'Water the plants'
+    })
 
     done()
   })

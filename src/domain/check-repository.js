@@ -24,7 +24,11 @@ class CheckRepository {
       id: checkObj._id.toString(),
       date: moment(checkObj.date),
       note: checkObj.note,
-      buttonId: checkObj.buttonId
+      buttonId: checkObj.buttonId,
+      createdAt: {
+        type: Date,
+        default: Date.now
+      }
     })
   }
 

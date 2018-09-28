@@ -8,7 +8,7 @@ const services = {
   userInitService: new User.InitService(),
   userButtonService: new User.ButtonService(),
   buttonRepository: new Button.Repository(),
-  checkRepository: new Check.Repository()
+  checkService: new Check.Service()
 }
 
 module.exports = app => {

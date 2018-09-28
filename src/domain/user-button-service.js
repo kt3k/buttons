@@ -16,6 +16,12 @@ class UserButtonService {
    * @param {Object} buttonObj
    */
   async createButton (user, buttonObj) {
+    if (!user.id) {
+      throw new Error(
+        'The user does not have id property. Save the user first to create a button.'
+      )
+    }
+
     const button = new Button(buttonObj)
     button.id = mongoose.Types.ObjectId().toString()
     button.userId = user.id

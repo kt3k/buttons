@@ -16,4 +16,7 @@ props:
 - name: button
   type: Button
   desc: The button of the check
+- name: createdAt
+  type: moment
+  desc: The date time when the check is created
 ---
