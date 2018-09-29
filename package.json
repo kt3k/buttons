@@ -53,6 +53,7 @@
     "gulp-nunjucks-render": "^2.2.2",
     "husky": "^0.14.3",
     "idtoken-verifier": "^1.2.0",
+    "insert-css": "^2.0.0",
     "kocha": "^1.9.1",
     "lint-staged": "^7.2.2",
     "mock-express-request": "^0.2.2",
