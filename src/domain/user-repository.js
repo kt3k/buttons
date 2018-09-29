@@ -56,6 +56,17 @@ class UserRepository {
     return this.userObjToUser(userObj)
   }
 
+  /**
+   *
+   * @param {string} id
+   * @return {Promise<User>
+   */
+  async getById (id) {
+    const userObj = await UserODM.findById(id).exec()
+
+    return this.userObjToUser(userObj)
+  }
+
   async userObjToUser (userObj) {
     if (userObj == null) {
       return null
