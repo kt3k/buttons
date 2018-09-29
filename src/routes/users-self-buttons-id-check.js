@@ -21,7 +21,7 @@ exports.check = ({ userRepository, buttonRepository, checkService }) => async (
     throw new ApiError('The operation is not permitted', 403, 403)
   }
 
-  const d = req.query.d
+  const d = req.body.d
 
   if (!DATE_RE.test(d)) {
     throw new ApiError(`Bad format date: ${d}`, 400, 400)
@@ -56,7 +56,7 @@ exports.uncheck = ({
     throw new ApiError('The operation is not permitted', 403, 403)
   }
 
-  const d = req.query.d
+  const d = req.body.d
 
   if (!DATE_RE.test(d)) {
     throw new ApiError(`Bad format date: ${d}`, 400, 400)

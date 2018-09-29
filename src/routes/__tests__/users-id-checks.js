@@ -31,6 +31,7 @@ describe('GET /users/:id/checks?d=', () => {
     await api.get(services)(req, res)
 
     assert.strictEqual(res.statusCode, 200)
+    assert.strictEqual(res._getJSON().length, 1)
 
     const checks = await services.checkRepository.getByButtonIdsAndDate(
       user.buttons[0].id,

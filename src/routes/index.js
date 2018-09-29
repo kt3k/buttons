@@ -8,6 +8,7 @@ const services = {
   userInitService: new User.InitService(),
   userButtonService: new User.ButtonService(),
   buttonRepository: new Button.Repository(),
+  checkRepository: new Check.Repository(),
   checkService: new Check.Service()
 }
 
@@ -68,5 +69,11 @@ module.exports = app => {
     '/users/self/buttons/:id/uncheck',
     checkJwt,
     handleApiError(require('./users-self-buttons-id-check').uncheck(services))
+  )
+
+  app.options('/users/:id/checks', allowMethods('GET'), ok)
+  app.get(
+    '/users/:id/checks',
+    handleApiError(require('./users-id-checks').get(services))
   )
 }

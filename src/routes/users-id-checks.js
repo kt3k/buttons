@@ -12,7 +12,7 @@ exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
 
   if (d) {
     const checks = await getByDate(buttonIds, moment(d), checkRepository)
-    res.status(200).json(checks)
+    res.status(200).json(checks.checks)
     return
   }
 
