@@ -1,5 +1,7 @@
 const { component, on, make, wired } = require('capsid')
+const { format } = require('date-fns')
 const { Action } = require('../../const')
+const api = require('../../util/api')
 
 @component('main-buttons-area')
 class MainButtonsArea {
@@ -15,23 +17,37 @@ class MainButtonsArea {
   }
 
   @on(Action.AUTH_READY)
-  update ({ detail: user }) {
-    console.log(user.buttons)
+  async update ({ detail: user }) {
+    const checks = await this.fetchChecks(user.id)
+
+    console.log(checks)
 
     for (const button of user.buttons) {
-      this.createTheButton(button)
+      const check = checks.find(check => check.buttonId === button.id)
+      this.createTheButton(button, check)
     }
   }
 
   /**
    * @param {Object} buttonObj
+   * @param {Object} checkObj
    */
-  createTheButton (buttonObj) {
-    const button = document.createElement('button')
+  createTheButton (buttonObj, checkObj) {
+    const button = document.createElement('div')
     const buttonComponent = make('the-button', button)
-    buttonComponent.update(buttonObj)
+    button.dataset.id = buttonObj.id
+    buttonComponent.update(buttonObj, checkObj)
     this.buttonArea.appendChild(button)
-    this.buttonArea.appendChild(new Text(' '))
+  }
+
+  async fetchChecks (userId) {
+    const today = format(new Date(), 'YYYY-MM-DD')
+    const { data: checks } = await api(
+      'GET',
+      `/users/${userId}/checks?d=${today}`
+    )
+
+    return checks
   }
 }
 
