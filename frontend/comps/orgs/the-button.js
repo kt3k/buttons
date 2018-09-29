@@ -64,6 +64,7 @@ class TheButton {
   }
 
   setLoading () {
+    this.checkButton.classList.add('is-loading')
     this.checkButton.classList.remove('is-checked', 'is-unchecked')
   }
 
@@ -72,7 +73,6 @@ class TheButton {
     this.checkButton.classList.toggle('is-unchecked', !checked)
     this.checkButton.classList.toggle('is-checked', checked)
     this.checkButton.classList.toggle('is-info', checked)
-    // this.signButton.classList.toggle('is-info', checked)
     this.signButton.textContent = checked ? '👍' : '🐹'
   }
 }
