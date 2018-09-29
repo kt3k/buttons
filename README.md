@@ -7,21 +7,44 @@ https://buttons.kt3k.org/ (nothing yet)
 [![CircleCI](https://circleci.com/gh/kt3k/buttons.svg?style=svg)](https://circleci.com/gh/kt3k/buttons)
 [![codecov](https://codecov.io/gh/kt3k/buttons/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/buttons)
 
+# High level Architecture
+
+## BaaS
 - JAMstack ( https://jamstack.org/ )
 - Now ( https://zeit.co/now )
 - Auth0 ( https://auth0.com/ )
-- MongoDB ( mlab, https://mlab.com/ )
+- mlab ( https://mlab.com/ )
+
+## Archtecture
+
 - DDD
-- capsid.js ( https://capsid.js.org/ )
-- bulbo ( https://github.com/kt3k/bulbo )
-- SPA
+
+## Database
+
+- MongoDB
+
+## Build tools
+
 - docker (for mongodb preparation)
+- bulbo ( https://github.com/kt3k/bulbo )
+
+## Backend tools
+
+- node.js
+- express
+
+## Frontend tools
+
+- capsid.js ( https://capsid.js.org/ )
+
+## Testing
+
+- CircleCI ( https://circleci.com/ )
+- Codecov ( https://codecov.io/ )
 - kocha (testing, mocha clone, https://github.com/kt3k/kocha )
 - power-assert ( assertion, https://github.com/power-assert-js/power-assert )
 - nyc ( https://github.com/istanbuljs/nyc )
 - prettier + husky + lint-staged
-- CircleCI ( https://circleci.com/ )
-- Codecov ( https://codecov.io/ )
 
 # Domain Models
 
@@ -122,19 +145,15 @@ This runs local static site and lcoal api server.
 
 - Get the users
 
-## GET /checks - auth
+## GET /users/:id - noauth
 
-- Get my checks
+- Get the user's profile
 
-## GET /users/:user/buttons - noauth
+## GET /users/:id/checks?from=YYYY-MM-DD&to=YYYY-MM-DD - noauth
 
-- Get the user's button
+- Get the user's checks in the range of date
 
-## GET /users/:user/checks - noauth
-
-- Get the user's checks
-
-## GET /users/:user/checks/?d=YYYY-MM-DD
+## GET /users/:id/checks?d=YYYY-MM-DD
 
 - Get the user's check by the date
 
@@ -148,7 +167,7 @@ This runs local static site and lcoal api server.
 
 # Use cases
 
-## Onboarding
+## Onboarding (Done)
 
 - Go to /
 - Auth0 login
