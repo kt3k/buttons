@@ -43,6 +43,7 @@
     "babelify": "^10.0.0-beta.1",
     "bulbo": "^7.0.0",
     "bundle-through": "^1.0.3",
+    "cal-heatmap": "^3.6.2",
     "capsid": "^0.27.2",
     "codecov": "^3.1.0",
     "cross-env": "^5.2.0",

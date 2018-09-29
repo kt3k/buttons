@@ -1549,6 +1549,12 @@ caching-transform@^2.0.0:
     package-hash "^2.0.0"
     write-file-atomic "^2.0.0"
 
+cal-heatmap@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/cal-heatmap/-/cal-heatmap-3.6.2.tgz#961a7f4686b3bdcf7104d951b6ff1dd58c0c62d1"
+  dependencies:
+    d3 "^3.0.6"
+
 call-matcher@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/call-matcher/-/call-matcher-1.1.0.tgz#23b2c1bc7a8394c8be28609d77ddbd5786680432"
@@ -2045,6 +2051,10 @@ css@2.X, css@^2.2.1:
     source-map "^0.6.1"
     source-map-resolve "^0.5.2"
     urix "^0.1.0"
+
+d3@^3.0.6:
+  version "3.5.17"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-3.5.17.tgz#bc46748004378b21a360c9fc7cf5231790762fb8"
 
 d@1:
   version "1.0.0"
