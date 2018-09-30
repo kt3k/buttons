@@ -15,6 +15,11 @@ const services = {
 module.exports = app => {
   app.use(corsOk)
 
+  app.options('/', allowMethods('GET'), ok)
+  app.get('/', (req, res) => {
+    res.status(200).json({ message: 'ok' })
+  })
+
   app.options('/users/self', allowMethods('GET'), ok)
   app.get(
     '/users/self',

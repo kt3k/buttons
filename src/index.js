@@ -1,17 +1,14 @@
 const express = require('express')
 const app = express()
 const db = require('./util/db')
-const { ok, allowMethods } = require('./util/routes')
 const bodyParser = require('body-parser')
 
 db.on('open', () => console.log('db connected'))
 
-app.use(bodyParser.json())
+// Uncomment this line if you like to simulate slow api responses.
+// app.use((req, res, next) => setTimeout(next, 3000))
 
-app.options('/', allowMethods('GET'), ok)
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'ok' })
-})
+app.use(bodyParser.json())
 
 require('./routes')(app)
 
