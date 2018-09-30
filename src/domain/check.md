@@ -13,9 +13,9 @@ props:
 - name: note
   type: string
   desc: The note of the check
-- name: button
-  type: Button
-  desc: The button of the check
+- name: buttonId
+  type: string
+  desc: The id of the button of the check
 - name: createdAt
   type: Date
   desc: The date time when the check is created

@@ -9,7 +9,11 @@ const checkSchema = new mongoose.Schema({
   id: String,
   date: Date,
   note: String,
-  buttonId: String
+  buttonId: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 const CheckODM = mongoose.model('Check', checkSchema)
@@ -28,10 +32,7 @@ class CheckRepository {
       date: checkObj.date,
       note: checkObj.note,
       buttonId: checkObj.buttonId,
-      createdAt: {
-        type: Date,
-        default: Date.now
-      }
+      createdAt: checkObj.createdAt
     })
   }
 

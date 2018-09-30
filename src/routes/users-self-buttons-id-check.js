@@ -1,7 +1,6 @@
 const { ApiError } = require('../util/api')
+const { isValidDateStr } = require('../util/date')
 const { parse } = require('date-fns')
-
-const DATE_RE = /^\d\d\d\d-\d\d-\d\d$/
 
 exports.check = ({ userRepository, buttonRepository, checkService }) => async (
   req,
@@ -23,16 +22,11 @@ exports.check = ({ userRepository, buttonRepository, checkService }) => async (
 
   const d = req.body.d
 
-  if (!DATE_RE.test(d)) {
+  if (!isValidDateStr(d)) {
     throw new ApiError(`Bad format date: ${d}`, 400, 400)
   }
 
-  const date = parse(d)
-  if (isNaN(date)) {
-    throw new ApiError(`Bad date: ${d}`, 400, 400)
-  }
-
-  await checkService.check(button.id, date)
+  await checkService.check(button.id, parse(d))
 
   res.status(204).send('')
 }
@@ -58,16 +52,11 @@ exports.uncheck = ({
 
   const d = req.body.d
 
-  if (!DATE_RE.test(d)) {
-    throw new ApiError(`Bad format date: ${d}`, 400, 400)
-  }
-
-  const date = parse(d)
-  if (isNaN(date)) {
+  if (!isValidDateStr(d)) {
     throw new ApiError(`Bad date: ${d}`, 400, 400)
   }
 
-  await checkService.uncheck(button.id, date)
+  await checkService.uncheck(button.id, parse(d))
 
   res.status(204).send('')
 }

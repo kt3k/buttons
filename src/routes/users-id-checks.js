@@ -1,5 +1,6 @@
 const { ApiError } = require('../util/api')
-const { parse } = require('date-fns')
+const { parse, format, differenceInDays } = require('date-fns')
+const { isValidDateStr } = require('../util/date')
 
 exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
   const id = req.params.id
@@ -10,26 +11,53 @@ exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
   const user = await userRepository.getById(id)
   const buttonIds = user.buttons.map(button => button.id)
 
-  if (d) {
-    const checks = await getByDate(buttonIds, parse(d), checkRepository)
-    res.status(200).json(checks.checks)
+  if (isValidDateStr(d)) {
+    const checks = await checkRepository.getByButtonIdsAndDate(
+      buttonIds,
+      parse(d)
+    )
+    res.status(200).json(checks.checks.map(checkToApiResult))
     return
   }
 
-  if (/YYYY-MM-DD/.test(from)) {
-    // TODO: impelemnt
+  if (!isValidDateStr(from) || !isValidDateStr(to)) {
     throw new ApiError(`Bad from/to query: ${from}/${to}`, 400, 400)
   }
 
-  const checkRange = await getByDateRange(buttonIds, parse(from), parse(to))
-  res.status(200).json(checkRange)
+  const fromDate = parse(from)
+  const toDate = parse(to)
+
+  if (differenceInDays(from, to) > 400) {
+    throw new ApiError(`Too long range: ${from}/${to}`, 400, 400)
+  }
+
+  const records = await checkRepository.getByButtonIdsAndDateRange(
+    buttonIds,
+    fromDate,
+    toDate
+  )
+  res.status(200).json(records.map(recordToApiResult))
 }
 
-const getByDate = async (buttonIds, date, checkRepository) => {
-  return checkRepository.getByButtonIdsAndDate(buttonIds, date)
-}
+/**
+ * @param {DailyCheckRecord}
+ * @return {Object}
+ */
+const recordToApiResult = record => ({
+  date: format(record.date, 'YYYY-MM-DD'),
+  checks: record.checks.checks.map(checkToApiResult)
+})
 
-const getByDateRange = async (buttonIds, from, to, checkRepository) => {
-  // TODO implement this
-  return checkRepository.getByButtonIdsAndDateRange(buttonIds, from, to)
+/**
+ * @param {Check}
+ * @return {Object}
+ */
+const checkToApiResult = check => {
+  const result = { buttonId: check.buttonId }
+
+  if (check.note) {
+    result.note = check.note
+  }
+
+  return result
 }
