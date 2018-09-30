@@ -18,6 +18,7 @@ class CalHeatmap {
       domain: 'month',
       subDomain: 'day',
       start: subMonths(new Date(), 11),
+      legendHorizontalPosition: 'right',
       tooltip: true
     })
 
