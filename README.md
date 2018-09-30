@@ -183,13 +183,13 @@ This runs local static site and lcoal api server.
 - Go to /
 - Done
 
-## Push button
+## Push button (Done)
 
 - Go to / (loggedIn)
 - Push buttons
 - Done
 
-## Browse my checks
+## Browse my checks (Done)
 
 - Go to /checks
 - Browse my checks
@@ -204,7 +204,7 @@ This runs local static site and lcoal api server.
 - See :user's checks
 - Done
 
-## Modify my buttons
+## Modify my buttons (Done)
 
 - Go to /set-buttons.html
 - Modify my buttons
