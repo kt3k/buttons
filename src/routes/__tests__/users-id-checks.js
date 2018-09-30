@@ -1,6 +1,6 @@
 const { describe, it } = require('kocha')
 const assert = require('assert')
-const moment = require('moment')
+const { parse } = require('date-fns')
 
 const { Check, User } = require('../../domain')
 
@@ -23,7 +23,7 @@ describe('GET /users/:id/checks?d=', () => {
     const d = '2018-09-23'
 
     const user = await services.userRepository.getByAuthId('github|123')
-    await services.checkService.check(user.buttons[0].id, moment(d))
+    await services.checkService.check(user.buttons[0].id, parse(d))
 
     req.params = { id: user.id }
     req.query = { d }
@@ -35,7 +35,7 @@ describe('GET /users/:id/checks?d=', () => {
 
     const checks = await services.checkRepository.getByButtonIdsAndDate(
       user.buttons[0].id,
-      moment(d)
+      parse(d)
     )
 
     assert.strictEqual(checks.length, 1)

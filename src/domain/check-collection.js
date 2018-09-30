@@ -6,12 +6,11 @@ class CheckCollection {
    * @param {Check[]} checks
    */
   constructor (checks = []) {
-    this.checks = checks
-
+    this.checks = []
     this.checkMap = {}
 
-    this.checks.forEach(check => {
-      this.checkMap[check.buttonId] = check
+    checks.forEach(check => {
+      this.add(check)
     })
   }
 
@@ -35,6 +34,11 @@ class CheckCollection {
    */
   get (index) {
     return this.checks[index]
+  }
+
+  add (check) {
+    this.checks.push(check)
+    this.checkMap[check.buttonId] = check
   }
 }
 

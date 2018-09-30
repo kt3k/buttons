@@ -8,7 +8,7 @@ props:
   type: string
   desc: The id of the user
 - name: date
-  type: moment
+  type: Date
   desc: The date of the check
 - name: note
   type: string
@@ -17,6 +17,6 @@ props:
   type: Button
   desc: The button of the check
 - name: createdAt
-  type: moment
+  type: Date
   desc: The date time when the check is created
 ---

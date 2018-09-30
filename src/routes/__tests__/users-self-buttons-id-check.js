@@ -1,8 +1,8 @@
 const { describe, it } = require('kocha')
 const assert = require('assert')
-const moment = require('moment')
 const Req = require('mock-express-request')
 const Res = require('mock-express-response')
+const { parse } = require('date-fns')
 
 const { User, Button, Check } = require('../../domain')
 
@@ -35,7 +35,7 @@ describe('POST /users/self/buttons/:id/check', () => {
 
     const checks = await checkRepository.getByButtonIdsAndDate(
       button.id,
-      moment(d)
+      parse(d)
     )
 
     assert.strictEqual(checks.length, 1)
@@ -64,7 +64,7 @@ describe('POST /users/self/buttons/:id/uncheck', () => {
 
     const checks = await checkRepository.getByButtonIdsAndDate(
       button.id,
-      moment(d)
+      parse(d)
     )
 
     assert.strictEqual(checks.length, 0)

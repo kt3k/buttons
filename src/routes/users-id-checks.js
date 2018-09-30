@@ -1,5 +1,5 @@
 const { ApiError } = require('../util/api')
-const moment = require('moment')
+const { parse } = require('date-fns')
 
 exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
   const id = req.params.id
@@ -11,7 +11,7 @@ exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
   const buttonIds = user.buttons.map(button => button.id)
 
   if (d) {
-    const checks = await getByDate(buttonIds, moment(d), checkRepository)
+    const checks = await getByDate(buttonIds, parse(d), checkRepository)
     res.status(200).json(checks.checks)
     return
   }
@@ -21,7 +21,7 @@ exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
     throw new ApiError(`Bad from/to query: ${from}/${to}`, 400, 400)
   }
 
-  const checkRange = await getByDateRange(buttonIds, moment(from), moment(to))
+  const checkRange = await getByDateRange(buttonIds, parse(from), parse(to))
   res.status(200).json(checkRange)
 }
 

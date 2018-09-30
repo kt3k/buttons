@@ -6,7 +6,7 @@ const repository = new CheckRepository()
 class CheckService {
   /**
    * @param {string} buttonId
-   * @param {moment} date
+   * @param {Date} date
    * @return {Promise<void>}
    */
   async check (buttonId, date) {
@@ -28,7 +28,7 @@ class CheckService {
 
   /**
    * @param {string} buttonId
-   * @param {moment} date
+   * @param {Date} date
    */
   async uncheck (buttonId, date) {
     await repository.deleteByButtonIdAndDate(buttonId, date)

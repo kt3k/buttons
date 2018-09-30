@@ -3,7 +3,7 @@ class DailyCheckRecord {
    * @param {Date} date
    * @param {CheckCollection} checks
    */
-  constructor (date, checks) {
+  constructor ({ date, checks }) {
     this.date = date
     this.checks = checks
   }
@@ -17,6 +17,13 @@ class DailyCheckRecord {
    */
   isCheckedForButtonId (buttonId) {
     return this.checks.getByButtonId(buttonId) != null
+  }
+
+  /**
+   * @param {Check} check
+   */
+  add (check) {
+    this.checks.add(check)
   }
 }
 

@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const moment = require('moment')
+const { startOfDay, isSameDay } = require('date-fns')
 
 const Check = require('./check')
 const CheckCollection = require('./check-collection')
+const DailyCheckRecord = require('./daily-check-record')
 
 const checkSchema = new mongoose.Schema({
   id: String,
@@ -13,6 +14,8 @@ const checkSchema = new mongoose.Schema({
 
 const CheckODM = mongoose.model('Check', checkSchema)
 
+const last = arr => arr[arr.length - 1]
+
 class CheckRepository {
   /**
    * Converts the check object to a check.
@@ -22,7 +25,7 @@ class CheckRepository {
   static checkObjToCheck (checkObj) {
     return new Check({
       id: checkObj._id.toString(),
-      date: moment(checkObj.date),
+      date: checkObj.date,
       note: checkObj.note,
       buttonId: checkObj.buttonId,
       createdAt: {
@@ -34,18 +37,13 @@ class CheckRepository {
 
   /**
    * @param {string[]} buttonIds
-   * @param {moment} date
+   * @param {Date} date
    * @return {Promise<CheckCollection>}
    */
   async getByButtonIdsAndDate (buttonIds, date) {
-    /*
-    const d = date.clone().startOf('day')
-    const $gte = d.toDate()
-    const $lt = d.add(1, 'days').toDate()
-    */
     const checkArray = await CheckODM.find({
       buttonId: { $in: buttonIds },
-      date: date.toDate()
+      date: date
     }).exec()
 
     return new CheckCollection(checkArray.map(this.constructor.checkObjToCheck))
@@ -53,11 +51,44 @@ class CheckRepository {
 
   /**
    * @param {string[]} buttonIds
-   * @param {moment} startDate
-   * @param {moment} endDate
-   * @return {Promise<CheckCollection>}
+   * @param {Date} startDate
+   * @param {Date} endDate
+   * @return {Promise<DailyCheckRecord[]>}
    */
-  async getByButtonIdsAndDateRange (buttonIds, startDate, endDate) {}
+  async getByButtonIdsAndDateRange (buttonIds, startDate, endDate) {
+    const $gte = startOfDay(startDate)
+    const $lte = startOfDay(endDate)
+
+    const checkArray = await CheckODM.find({
+      buttonId: { $in: buttonIds },
+      date: { $gte, $lte }
+    })
+      .sort('date')
+      .exec()
+
+    const records = []
+
+    checkArray.forEach(checkObj => {
+      const check = this.constructor.checkObjToCheck(checkObj)
+
+      const lastRecord = last(records)
+
+      if (lastRecord != null && isSameDay(lastRecord.date, check.date)) {
+        lastRecord.add(check)
+      } else {
+        records.push(this.createNewDailyCheckRecord(check))
+      }
+    })
+
+    return records
+  }
+
+  createNewDailyCheckRecord (check) {
+    return new DailyCheckRecord({
+      date: check.date,
+      checks: new CheckCollection([check])
+    })
+  }
 
   /**
    * @param {Check} check
@@ -68,7 +99,7 @@ class CheckRepository {
       CheckODM.findOneAndUpdate(
         { _id: mongoose.Types.ObjectId(check.id) },
         {
-          date: check.date.toDate(),
+          date: check.date,
           note: check.note,
           buttonId: check.buttonId
         },
@@ -87,11 +118,11 @@ class CheckRepository {
 
   /**
    * @param {string} buttonId
-   * @param {moment} date
+   * @param {Date} date
    */
   async deleteByButtonIdAndDate (buttonId, date) {
     await CheckODM.findOneAndRemove({
-      date: date.toDate(),
+      date: date,
       buttonId
     }).exec()
   }

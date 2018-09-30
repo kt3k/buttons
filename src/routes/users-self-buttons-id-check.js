@@ -1,5 +1,5 @@
-const moment = require('moment')
 const { ApiError } = require('../util/api')
+const { parse } = require('date-fns')
 
 const DATE_RE = /^\d\d\d\d-\d\d-\d\d$/
 
@@ -27,8 +27,8 @@ exports.check = ({ userRepository, buttonRepository, checkService }) => async (
     throw new ApiError(`Bad format date: ${d}`, 400, 400)
   }
 
-  const date = moment(d)
-  if (!date.isValid()) {
+  const date = parse(d)
+  if (isNaN(date)) {
     throw new ApiError(`Bad date: ${d}`, 400, 400)
   }
 
@@ -62,8 +62,8 @@ exports.uncheck = ({
     throw new ApiError(`Bad format date: ${d}`, 400, 400)
   }
 
-  const date = moment(d)
-  if (!date.isValid()) {
+  const date = parse(d)
+  if (isNaN(date)) {
     throw new ApiError(`Bad date: ${d}`, 400, 400)
   }
 
