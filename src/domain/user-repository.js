@@ -92,6 +92,32 @@ class UserRepository {
       buttons
     })
   }
+
+  static userObjToUserWithoutButtons (userObj) {
+    return new User({
+      id: userObj._id.toString(),
+      picture: userObj.picture,
+      authId: userObj.authId,
+      authData: {},
+      displayId: userObj.displayId,
+      displayName: userObj.displayName,
+      buttons: []
+    })
+  }
+
+  /**
+   * Gets at most 1000 users.
+   * @return {Promise<User[]>}
+   */
+  async getMany () {
+    const userArray = await UserODM.find({})
+      .limit(1000)
+      .exec()
+
+    return userArray.map(userObj =>
+      this.constructor.userObjToUserWithoutButtons(userObj)
+    )
+  }
 }
 
 module.exports = UserRepository

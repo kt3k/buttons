@@ -73,4 +73,13 @@ describe('UserRepository', () => {
       assert.strictEqual(user0.authId, user1.authId)
     })
   })
+
+  describe('getMany', () => {
+    it('gets many users', async () => {
+      const users = await repository.getMany()
+
+      assert(Array.isArray(users))
+      assert(users[0] instanceof User)
+    })
+  })
 })
