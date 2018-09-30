@@ -18,9 +18,11 @@ class MainButtonsArea {
 
   @on(Action.AUTH_READY)
   async update ({ detail: user }) {
-    const checks = await this.fetchChecks(user.id)
+    if (!user) {
+      return
+    }
 
-    console.log(checks)
+    const checks = await this.fetchChecks(user.id)
 
     for (const button of user.buttons) {
       const check = checks.find(check => check.buttonId === button.id)

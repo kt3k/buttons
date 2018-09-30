@@ -1,6 +1,6 @@
 const { component, wired } = require('capsid')
 const Cal = require('cal-heatmap')
-const { subMonths } = require('date-fns')
+const { subMonths, parse } = require('date-fns')
 
 @component('cal-heatmap')
 class CalHeatmap {
@@ -22,7 +22,22 @@ class CalHeatmap {
     })
   }
 
-  update () {}
+  update ({ detail: { user, records } }) {
+    const data = {}
+
+    records.forEach(record => {
+      data[parse(record.date).valueOf() / 1000] = record.checks.length
+    })
+
+    const legend = user.buttons.map((_, i) => i + 0.5)
+    legend.shift()
+
+    // Note: if there are 4 buttons, legend is [1.5, 2.5, 3.5]
+    // This makes 0, 1, 2, 3, and 4 checks in all different colors.
+
+    this.cal.setLegend(legend)
+    this.cal.update(data)
+  }
 }
 
 module.exports = CalHeatmap
