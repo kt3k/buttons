@@ -29,7 +29,7 @@ describe('POST /users/self/buttons/:id/check', () => {
 
     req.user = { sub: 'github|123' }
     req.params = { id: button.id }
-    req.query = { d }
+    req.body = { d }
 
     await api.check(services)(req, res)
 
@@ -54,7 +54,7 @@ describe('POST /users/self/buttons/:id/uncheck', () => {
 
     req.user = { sub: 'github|123' }
     req.params = { id: button.id }
-    req.query = { d }
+    req.body = { d }
 
     await api.check(services)(req, res0)
 
