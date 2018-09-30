@@ -18,7 +18,6 @@ insertCss(`
 @component('slow-message')
 class SlowMessage {
   async __mount__ () {
-    this.el.style.display = ''
     this.showAfter(2000)
 
     await api('GET', '/')
@@ -32,7 +31,10 @@ class SlowMessage {
 
   showAfter (milliseconds) {
     setTimeout(() => {
-      this.el.classList.add('is-visible')
+      this.el.style.display = ''
+      setTimeout(() => {
+        this.el.classList.add('is-visible')
+      }, 10)
     }, milliseconds)
   }
 }

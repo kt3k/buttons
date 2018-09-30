@@ -20,6 +20,8 @@ class CalHeatmap {
       start: subMonths(new Date(), 11),
       tooltip: true
     })
+
+    this.cal.setLegend([1])
   }
 
   update ({ detail: { user, records } }) {
