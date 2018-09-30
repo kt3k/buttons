@@ -15,10 +15,14 @@ const services = {
 module.exports = app => {
   app.use(corsOk)
 
+  // Health check endpoint
   app.options('/', allowMethods('GET'), ok)
   app.get('/', (req, res) => {
     res.status(200).json({ message: 'ok' })
   })
+
+  app.options('/users', allowMethods('GET'), ok)
+  app.get('/users', handleApiError(require('./users').get(services)))
 
   app.options('/users/self', allowMethods('GET'), ok)
   app.get(
