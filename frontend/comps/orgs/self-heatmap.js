@@ -1,8 +1,8 @@
 const { component, on, emits } = require('capsid')
 const { Action } = require('../../const')
 
-@component('self-profile')
-class SelfProfile {
+@component('self-heatmap')
+class SelfHeatmap {
   __mount__ () {
     this.el.classList.add('auth-observer')
   }
@@ -14,4 +14,4 @@ class SelfProfile {
   }
 }
 
-module.exports = SelfProfile
+module.exports = SelfHeatmap
