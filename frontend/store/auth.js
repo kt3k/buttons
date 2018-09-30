@@ -18,6 +18,8 @@ class UserModule {
   @dispatches(Action.AUTH_READY)
   async requestAuth () {
     if (!isAuthenticated()) {
+      shouldBeIn('/')
+
       return null
     }
 
@@ -27,16 +29,24 @@ class UserModule {
     )
 
     if (self.displayId == null) {
-      location.href = '/set-id.html' // TODO: use basepath variable
+      shouldBeIn('/set-id.html')
+
       return
     }
 
     if (self.buttons == null || self.buttons.length === 0) {
-      location.href = '/set-buttons.html' // TODO: use basepath variable
+      shouldBeIn('/set-buttons.html')
+
       return
     }
 
     return self
+  }
+}
+
+const shouldBeIn = pathname => {
+  if (location.pathname !== pathname) {
+    location.pathname = pathname
   }
 }
 
