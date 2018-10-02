@@ -1,6 +1,6 @@
 # buttons
 
-https://buttons.kt3k.org/ (nothing yet)
+https://buttons.kt3k.org/
 
 > Daily push buttons
 
