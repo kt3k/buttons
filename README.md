@@ -10,13 +10,13 @@ https://buttons.kt3k.org/
 # High level Architecture
 
 ## BaaS
-- JAMstack ( https://jamstack.org/ )
 - Now ( https://zeit.co/now )
 - Auth0 ( https://auth0.com/ )
 - mlab ( https://mlab.com/ )
 
 ## Archtecture
 
+- JAMstack ( https://jamstack.org/ )
 - DDD
 
 ## Database
@@ -53,7 +53,7 @@ https://buttons.kt3k.org/
 
 # Domain Models
 
-See [domaindoc](https://kt3k-buttons.netlify.com/domaindoc/).
+See [domaindoc](https://buttons.kt3k.org/domaindoc/).
 
 # Development
 
