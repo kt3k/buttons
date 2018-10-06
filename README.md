@@ -96,9 +96,15 @@ This runs local static site and lcoal api server.
 
 ## /:user - public
 
+(/profile.html?user=:user)
+
 - The user's check calendar
 
 ## /:user/:date - public
+
+(/day.html?user=:user&date=YYYY-MM-DD)
+
+- The user's single day contribution
 
 ## /settings - auth
 
@@ -152,7 +158,7 @@ This runs local static site and lcoal api server.
 
 ## GET /users/:id - noauth
 
-- Get the user's profile
+- Get the user's profile by the display id
 
 ## GET /users/:id/checks?from=YYYY-MM-DD&to=YYYY-MM-DD - noauth
 
