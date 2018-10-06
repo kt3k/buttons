@@ -25,10 +25,6 @@ module.exports = app => {
   app.options('/users', allowMethods('GET'), ok)
   app.get('/users', handleApiError(require('./users').get(services)))
 
-  // Gets the user
-  app.options('/users/:id', allowMethods('GET'), ok)
-  app.get('/users/:id', handleApiError(require('./users-id').get(services)))
-
   // Gets myself
   app.options('/users/self', allowMethods('GET'), ok)
   app.get(
@@ -91,4 +87,8 @@ module.exports = app => {
     '/users/:id/checks',
     handleApiError(require('./users-id-checks').get(services))
   )
+
+  // Gets the user
+  app.options('/users/:id', allowMethods('GET'), ok)
+  app.get('/users/:id', handleApiError(require('./users-id').get(services)))
 }
