@@ -21,9 +21,15 @@ module.exports = app => {
     res.status(200).json({ message: 'ok' })
   })
 
+  // Gets the list of (random) users
   app.options('/users', allowMethods('GET'), ok)
   app.get('/users', handleApiError(require('./users').get(services)))
 
+  // Gets the user
+  app.options('/users/:id', allowMethods('GET'), ok)
+  app.get('/users/:id', handleApiError(require('./users-id').get(services)))
+
+  // Gets myself
   app.options('/users/self', allowMethods('GET'), ok)
   app.get(
     '/users/self',

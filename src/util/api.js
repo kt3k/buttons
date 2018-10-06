@@ -45,3 +45,14 @@ exports.handleApiError = handler => async (req, res) => {
     })
   }
 }
+
+/**
+ * Converts the user object into a dto.
+ * @param {User} user
+ * @return {Object}
+ */
+exports.userToUserDto = user => ({
+  displayId: user.displayId,
+  displayName: user.displayName,
+  picture: user.picture
+})

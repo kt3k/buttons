@@ -12,7 +12,7 @@ describe('UserRepository', () => {
           picture: 'https://example.com/avatar.png',
           authId: 'github|56',
           authData: {},
-          displayId: 'foo',
+          displayId: 'foo1',
           displayName: 'Buzz Foobar',
           buttons: []
         })
@@ -26,19 +26,19 @@ describe('UserRepository', () => {
       assert.strictEqual(user.authId, 'github|56')
       assert.deepStrictEqual(user.authData, {})
       assert(user.id != null)
-      assert.strictEqual(user.displayId, 'foo')
+      assert.strictEqual(user.displayId, 'foo1')
       assert.strictEqual(user.displayName, 'Buzz Foobar')
     })
 
     it('updates the existing user', async () => {
-      const user0 = await repository.getByAuthId('github|123')
+      const user0 = await repository.getByAuthId('github|56')
 
-      user0.displayName = 'Fizz Boofar'
+      user0.picture = 'https://example.com/avatar1.png'
 
       await repository.save(user0)
 
-      const user1 = await repository.getByAuthId('github|123')
-      assert.strictEqual(user1.displayName, 'Fizz Boofar')
+      const user1 = await repository.getByAuthId('github|56')
+      assert.strictEqual(user1.picture, 'https://example.com/avatar1.png')
     })
   })
 
