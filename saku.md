@@ -44,3 +44,9 @@
 > Deploys the server to zeit now
 
     now --public
+
+# deploy-auto
+> Deploys the server to zeit now and update the alias
+
+    now --public
+    now alias
