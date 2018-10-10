@@ -21,10 +21,9 @@ describe('GET /users/:id', () => {
     await api.get(services)(req, res)
 
     assert.strictEqual(res.statusCode, 200)
-    assert.deepStrictEqual(res._getJSON(), {
-      displayId: 'foo',
-      displayName: 'Buzz Foobar',
-      picture: 'https://example.com/avatar.png'
-    })
+    assert.strictEqual(res._getJSON().displayId, 'foo')
+    assert.strictEqual(res._getJSON().displayName, 'Buzz Foobar')
+    assert.strictEqual(res._getJSON().picture, 'https://example.com/avatar.png')
+    assert.strictEqual(res._getJSON().buttons.length, 3)
   })
 })

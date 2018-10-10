@@ -56,3 +56,19 @@ exports.userToUserDto = user => ({
   displayName: user.displayName,
   picture: user.picture
 })
+
+/**
+ * Converts the user (with the buttons) into a dto.
+ * @param {User} user
+ * @return {Object}
+ */
+exports.userToUserDtoWithButtons = user => ({
+  displayId: user.displayId,
+  displayName: user.displayName,
+  picture: user.picture,
+  buttons: user.buttons.map(button => ({
+    id: button.id,
+    name: button.name,
+    description: button.description
+  }))
+})

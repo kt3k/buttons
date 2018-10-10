@@ -1,4 +1,4 @@
-const { ApiError, userToUserDto } = require('../util/api')
+const { ApiError, userToUserDtoWithButtons } = require('../util/api')
 
 exports.get = ({ userRepository }) => async (req, res) => {
   const displayId = req.params.id
@@ -9,5 +9,5 @@ exports.get = ({ userRepository }) => async (req, res) => {
     throw new ApiError('The user not found', 404, 404)
   }
 
-  res.status(200).json(userToUserDto(user))
+  res.status(200).json(userToUserDtoWithButtons(user))
 }
