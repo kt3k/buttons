@@ -1,53 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buttons</title>
-    <link rel="stylesheet" href="{{ basepath }}/css/bulma.min.css">
-    <link rel="stylesheet" href="{{ basepath }}/vendor/cal-heatmap.css">
-  </head>
-  <body class="app-store">
-    <nav class="level" style="margin: 1.5rem;">
-      <div class="level-left">
-        <div class="level-item">
-          <p class="subtitle is-5"><strong>🐹 Buttons</strong></p>
-        </div>
-      </div>
-      <div class="level-right">
-        <p class="level-item nav-settings-area" style="display:none;">
-          <a href="./set-buttons.html" class="button">🔧Settings</a>
-        </p>
-      </div>
-    </nav>
-    <div class="section">
-      <div class="slow-message notification is-info" style="display: none;">
-        <p><a class="button is-info is-loading">Loading</a></p>
-        <p>The system is cold starting.</p>
-        <p>We use <a href="https://zeit.co/now">now</a> for our backend. It makes sometimes the system <a href="https://zeit.co/docs/guides/app-lifecycle-and-scalability">frozen</a> if nobody uses this app for a while.</p>
-      </div>
-      <div class="main-buttons-area auth-observer container">
-      </div>
-      <p>
-        <button class="button login-button" style="display: none;">Login</button>
-      </p>
+---
+body:
+  class: app-store
+---
+<nav class="level" style="margin: 1.5rem;">
+  <div class="level-left">
+    <div class="level-item">
+      <p class="subtitle is-5"><strong>🐹 Buttons</strong></p>
     </div>
-    <div class="user-heatmap self-heatmap">
-    </div>
-    <div class="section">
-      <a href="./users.html">The list of the users</a>
-    </div>
-    <div class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <a href="https://github.com/kt3k/buttons">GitHub</a>
-          |
-          <a href="https://buttons.kt3k.org/domaindoc">domaindoc</a>
-          |
-          Created by <a href="https://github.com/kt3k">@kt3k</a>
-        </p>
-      </div>
-    </div>
-    <script src="{{ basepath }}/index.js"></script>
-  </body>
-</html>
+  </div>
+  <div class="level-right">
+    <p class="level-item nav-settings-area" style="display:none;">
+      <a href="./set-buttons.html" class="button">🔧Settings</a>
+    </p>
+  </div>
+</nav>
+<div class="section">
+  <div class="slow-message notification is-info" style="display: none;">
+    <p><a class="button is-info is-loading">Loading</a></p>
+    <p>The system is cold starting.</p>
+    <p>We use <a href="https://zeit.co/now">now</a> for our backend. It makes sometimes the system <a href="https://zeit.co/docs/guides/app-lifecycle-and-scalability">frozen</a> if nobody uses this app for a while.</p>
+  </div>
+  <div class="main-buttons-area auth-observer container">
+  </div>
+  <p>
+    <button class="button login-button" style="display: none;">Login</button>
+  </p>
+</div>
+<div class="user-heatmap self-heatmap">
+</div>
+<div class="section">
+  <a href="./users.html">The list of the users</a>
+</div>

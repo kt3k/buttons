@@ -1,51 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buttons</title>
-    <link rel="stylesheet" href="{{ basepath }}/css/bulma.min.css">
-  </head>
-  <body class="">
-    <nav class="level" style="margin: 1.5rem;">
-      <div class="level-left">
-        <div class="level-item">
-          <a class="button" href="./">back</a>
+<nav class="level" style="margin: 1.5rem;">
+  <div class="level-left">
+    <div class="level-item">
+      <a class="button" href="./">back</a>
+    </div>
+  </div>
+</nav>
+<div class="section user-profile">
+  <div class="card user-profile">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-128x128">
+            <img class="user-picture" />
+          </figure>
+        </div>
+        <div class="media-content">
+          <h2 class="title is-4"><strong><span class="user-display-name"></span></strong></h2>
+          <h3 class="subtitle is-6"><strong><span class="user-display-id"></span></strong></h3>
         </div>
       </div>
-    </nav>
-    <div class="section user-profile">
-      <div class="card user-profile">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-128x128">
-                <img class="user-picture" />
-              </figure>
-            </div>
-            <div class="media-content">
-              <h2 class="title is-4"><strong><span class="user-display-name"></span></strong></h2>
-              <h3 class="subtitle is-6"><strong><span class="user-display-id"></span></strong></h3>
-            </div>
-          </div>
-          <div class="content">
-            <div>Buttons here</div>
-            <div>Heatmap here</div>
-          </div>
-        </div>
+      <div class="content">
+        <div>Buttons here</div>
+        <div>Heatmap here</div>
       </div>
     </div>
-    <div class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <a href="https://github.com/kt3k/buttons">GitHub</a>
-          |
-          <a href="https://buttons.kt3k.org/domaindoc">domaindoc</a>
-          |
-          Created by <a href="https://github.com/kt3k">@kt3k</a>
-        </p>
-      </div>
-    </div>
-    <script src="{{ basepath }}/index.js"></script>
-  </body>
-</html>
+  </div>
+</div>

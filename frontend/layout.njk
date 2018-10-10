@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buttons</title>
+    <link rel="stylesheet" href="{{ basepath }}/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ basepath }}/vendor/cal-heatmap.css">
+  </head>
+  <body class="{{ file.fm.body.class }}">
+    {{ file.contents | safe }}
+    <div class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <a href="https://github.com/kt3k/buttons">GitHub</a>
+          |
+          <a href="https://buttons.kt3k.org/domaindoc">domaindoc</a>
+          |
+          Created by <a href="https://github.com/kt3k">@kt3k</a>
+        </p>
+      </div>
+    </div>
+    <script src="{{ basepath }}/index.js"></script>
+  </body>
+</html>
