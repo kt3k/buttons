@@ -8,7 +8,7 @@ exports.get = ({ checkRepository, userRepository }) => async (req, res) => {
   const to = req.query.to
   const d = req.query.d
 
-  const user = await userRepository.getById(id)
+  const user = await userRepository.getByDisplayId(id)
   const buttonIds = user.buttons.map(button => button.id)
 
   if (isValidDateStr(d)) {

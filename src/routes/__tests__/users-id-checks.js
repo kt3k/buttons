@@ -25,7 +25,7 @@ describe('GET /users/:id/checks?d=', () => {
     const user = await services.userRepository.getByAuthId('github|123')
     await services.checkService.check(user.buttons[0].id, parse(d))
 
-    req.params = { id: user.id }
+    req.params = { id: user.displayId }
     req.query = { d }
 
     await api.get(services)(req, res)
@@ -70,7 +70,7 @@ describe('GET /users/:id/checks?from=&to=', () => {
     // await services.checkService.check(id0, parse('2016-01-09'))
     await services.checkService.check(id0, parse('2016-01-10'))
 
-    req.params = { id: user.id }
+    req.params = { id: user.displayId }
     req.query = { from: '2016-01-06', to: '2016-01-09' }
 
     await api.get(services)(req, res)
