@@ -39,7 +39,15 @@ class UserProfile {
 
   fillButtons (buttons) {
     if (buttons.length === 0) {
-      this.buttonsArea.textContent = 'No buttons'
+      this.buttonsArea.innerHTML = `
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+              No buttons
+            </div>
+          </div>
+        </div>
+      `
     }
 
     buttons.forEach(button => {
