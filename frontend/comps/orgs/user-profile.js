@@ -1,6 +1,17 @@
 const { component, wired } = require('capsid')
 const api = require('../../util/api')
 const { getDisplayId } = require('../../util/path')
+const genel = require('genel')
+const insertCss = require('insert-css')
+
+insertCss(`
+  .user-profile .sign-button {
+    width: 50px;
+  }
+  .user-profile .check-button {
+    min-width: 120px;
+  }
+`)
 
 @component('user-profile')
 class UserProfile {
@@ -32,17 +43,24 @@ class UserProfile {
     }
 
     buttons.forEach(button => {
-      const p = document.createElement('p')
-      const span = document.createElement('span')
-      span.classList.add('button')
-      span.textContent = button.name
-      p.appendChild(span)
-      this.buttonsArea.appendChild(p)
-      if (button.description) {
-        const p = document.createElement('p')
-        p.textContent = button.description
-        this.buttonsArea.appendChild(p)
-      }
+      const div = genel.div`
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <div class="buttons has-addons">
+                <span class="button sign-button">🌴</span>
+                <span class="button check-button">${button.name}</span>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            ${button.description}
+          </div>
+        </div>
+      `
+      div.classList.add('card')
+
+      this.buttonsArea.appendChild(div)
     })
   }
 }
