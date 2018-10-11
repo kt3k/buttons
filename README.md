@@ -10,28 +10,29 @@ https://buttons.kt3k.org/
 # High level Architecture
 
 ## BaaS
-- Now ( https://zeit.co/now )
-- Auth0 ( https://auth0.com/ )
-- mlab ( https://mlab.com/ )
+
+- Now ( web server https://zeit.co/now )
+- Auth0 ( id https://auth0.com/ )
+- mlab ( mongodb https://mlab.com/ )
 
 ## Archtecture
 
 - JAMstack ( https://jamstack.org/ )
-- DDD
+- DDD ( https://en.wikipedia.org/wiki/Domain-driven_design )
 
 ## Database
 
-- MongoDB
+- MongoDB ( https://www.mongodb.com/ )
 
 ## Build tools
 
-- docker (for mongodb preparation)
-- bulbo ( https://github.com/kt3k/bulbo )
+- docker ( for mongodb preparation )
+- bulbo ( static site generator based on gulp https://github.com/kt3k/bulbo )
 
 ## Backend tools
 
-- node.js
-- express
+- node.js ( https://nodejs.org/ )
+- express ( https://expressjs.com/ )
 
 ## Frontend tools
 
@@ -45,11 +46,19 @@ https://buttons.kt3k.org/
 ## Testing
 
 - CircleCI ( https://circleci.com/ )
-- Codecov ( https://codecov.io/ )
-- kocha (testing, mocha clone, https://github.com/kt3k/kocha )
-- power-assert ( assertion, https://github.com/power-assert-js/power-assert )
-- nyc ( https://github.com/istanbuljs/nyc )
-- prettier + husky + lint-staged
+- Codecov ( coverage SaaS https://codecov.io/ )
+- kocha ( test runner, mocha clone https://github.com/kt3k/kocha )
+- power-assert ( assertion https://github.com/power-assert-js/power-assert )
+- nyc ( coverage https://github.com/istanbuljs/nyc )
+
+## Code quality
+
+- standard ( linter https://standardjs.com/ )
+- prettier ( formatter https://prettier.io/ )
+
+## Total Cost
+
+- Free! ✨😎
 
 # Domain Models
 
