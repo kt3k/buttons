@@ -26,7 +26,7 @@ https://buttons.kt3k.org/
 
 ## Build tools
 
-- docker ( for mongodb preparation )
+- docker ( for mongodb preparation https://www.docker.com/ )
 - bulbo ( static site generator based on gulp https://github.com/kt3k/bulbo )
 
 ## Backend tools
@@ -187,7 +187,7 @@ This runs local static site and lcoal api server.
 
 # Use cases
 
-## Onboarding (Done)
+## Onboarding
 
 - Go to /
 - Auth0 login
@@ -198,13 +198,13 @@ This runs local static site and lcoal api server.
 - Go to /
 - Done
 
-## Push button (Done)
+## Push button
 
 - Go to / (loggedIn)
 - Push buttons
 - Done
 
-## Browse my checks (Done)
+## Browse my checks
 
 - Go to /checks
 - Browse my checks
@@ -219,7 +219,7 @@ This runs local static site and lcoal api server.
 - See :user's checks
 - Done
 
-## Modify my buttons (Done)
+## Modify my buttons
 
 - Go to /set-buttons.html
 - Modify my buttons
