@@ -22,7 +22,7 @@ class MainButtonsArea {
       return
     }
 
-    const checks = await this.fetchChecks(user.id)
+    const checks = await this.fetchChecks(user.displayId)
 
     for (const button of user.buttons) {
       const check = checks.find(check => check.buttonId === button.id)
@@ -42,11 +42,11 @@ class MainButtonsArea {
     this.buttonArea.appendChild(button)
   }
 
-  async fetchChecks (userId) {
+  async fetchChecks (displayId) {
     const today = format(new Date(), 'YYYY-MM-DD')
     const { data: checks } = await api(
       'GET',
-      `/users/${userId}/checks?d=${today}`
+      `/users/${displayId}/checks?d=${today}`
     )
 
     return checks

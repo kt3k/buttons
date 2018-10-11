@@ -35,7 +35,7 @@ class UserHeatmap {
 
     const { data: records } = await api(
       'get',
-      `/users/${user.id}/checks?from=${yearAgo}&to=${today}`
+      `/users/${user.displayId}/checks?from=${yearAgo}&to=${today}`
     )
 
     this.heatmap.update({ detail: { user, records } })

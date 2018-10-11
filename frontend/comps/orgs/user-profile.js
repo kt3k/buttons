@@ -1,6 +1,7 @@
-const { component, wired } = require('capsid')
+const { component, wired, notifies } = require('capsid')
 const api = require('../../util/api')
 const { getDisplayId } = require('../../util/path')
+const { Action } = require('../../const')
 const genel = require('genel')
 const insertCss = require('insert-css')
 
@@ -22,6 +23,9 @@ class UserProfile {
   @wired('.user-display-id')
   get displayIdLabel () {}
 
+  @wired.component('user-heatmap')
+  get userHeatmap () {}
+
   @wired('.user-profile-buttons-area')
   get buttonsArea () {}
 
@@ -35,6 +39,15 @@ class UserProfile {
     this.displayIdLabel.textContent = user.displayId
 
     this.fillButtons(user.buttons)
+
+    setTimeout(() => {
+      this.fillUserHeatmap(user)
+    }, 100)
+  }
+
+  @notifies(Action.FILL_USER, '.user-heatmap')
+  fillUserHeatmap (user) {
+    return user
   }
 
   fillButtons (buttons) {
