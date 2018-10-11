@@ -25,14 +25,27 @@ class CalHeatmap {
     this.cal.setLegend([1])
   }
 
-  update ({ detail: { user, records } }) {
-    const data = {}
+  getButtonIds (buttons) {
+    const ids = {}
 
-    records.forEach(record => {
-      data[parse(record.date).valueOf() / 1000] = record.checks.length
+    buttons.forEach(button => {
+      ids[button.id] = true
     })
 
-    const legend = user.buttons.map((_, i) => i + 0.5)
+    return ids
+  }
+
+  update ({ detail: { buttons, records } }) {
+    const data = {}
+    const buttonIds = this.getButtonIds(buttons)
+
+    records.forEach(record => {
+      data[parse(record.date).valueOf() / 1000] = record.checks.filter(
+        check => buttonIds[check.buttonId]
+      ).length
+    })
+
+    const legend = buttons.map((_, i) => i + 0.5)
     legend.shift()
 
     // Note: if there are 4 buttons, legend is [1.5, 2.5, 3.5]

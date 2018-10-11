@@ -38,7 +38,15 @@ class UserHeatmap {
       `/users/${user.displayId}/checks?from=${yearAgo}&to=${today}`
     )
 
-    this.heatmap.update({ detail: { user, records } })
+    this.user = user
+    this.records = records
+    this.updateHeatmap()
+  }
+
+  updateHeatmap () {
+    this.heatmap.update({
+      detail: { buttons: this.user.buttons, records: this.records }
+    })
   }
 }
 
