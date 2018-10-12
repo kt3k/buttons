@@ -35,24 +35,48 @@ class CalHeatmap {
     return ids
   }
 
-  update ({ detail: { buttons, records } }) {
+  /**
+   * Sets the max count of data.
+   * @param {numbr} buttonCount
+   */
+  setMaxCount ({ detail: buttonCount }) {
+    // Note: if there are 4 buttons, legend is [1.5, 2.5, 3.5]
+    // This makes 0, 1, 2, 3, and 4 checks in all different colors.
+    const legend = []
+    for (let i = 1.5; i < buttonCount; i += 1) {
+      legend.push(i)
+    }
+
+    if (legend.length === 0) {
+      this.cal.removeLegend()
+    } else {
+      this.cal.showLegend()
+    }
+
+    this.cal.setLegend(legend)
+  }
+
+  /**
+   * @param {Button[]} buttons
+   * @param {number} buttonCount
+   * @param {Record[]} records
+   */
+  update ({ detail: { buttons, buttonCount, records } }) {
     const data = {}
     const buttonIds = this.getButtonIds(buttons)
 
     records.forEach(record => {
-      data[parse(record.date).valueOf() / 1000] = record.checks.filter(
-        check => buttonIds[check.buttonId]
-      ).length
+      const count = record.checks.filter(check => buttonIds[check.buttonId])
+        .length
+      if (count > 0) {
+        data[parse(record.date).valueOf() / 1000] = count
+      }
     })
 
-    const legend = buttons.map((_, i) => i + 0.5)
-    legend.shift()
-
-    // Note: if there are 4 buttons, legend is [1.5, 2.5, 3.5]
-    // This makes 0, 1, 2, 3, and 4 checks in all different colors.
-
-    this.cal.setLegend(legend)
-    this.cal.update(data)
+    this.cal.update({})
+    setTimeout(() => {
+      this.cal.update(data)
+    }, 100)
   }
 }
 

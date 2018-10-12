@@ -18,6 +18,7 @@ class UserHeatmap {
   get heatmap () {}
 
   __mount__ () {
+    this.filterButtonIds = new Set()
     const heatmap = make('cal-heatmap', document.createElement('div'))
 
     this.el.appendChild(heatmap.el)
@@ -40,13 +41,39 @@ class UserHeatmap {
 
     this.user = user
     this.records = records
+
+    this.heatmap.setMaxCount({ detail: user.buttons.length })
+
     this.updateHeatmap()
   }
 
+  @on(Action.TOGGLE_BUTTON_FILTER)
+  onToggleButtonFilter ({ detail: { buttonIds } }) {
+    this.filterButtonIds = new Set(buttonIds)
+
+    if (this.records) {
+      // records are ready
+      this.updateHeatmap()
+    }
+  }
+
+  /**
+   * Updates the heatmap with the current records and button filter.
+   */
   updateHeatmap () {
     this.heatmap.update({
-      detail: { buttons: this.user.buttons, records: this.records }
+      detail: { buttons: this.getFilteredButtons(), records: this.records }
     })
+  }
+
+  getFilteredButtons () {
+    if (this.filterButtonIds.size === 0) {
+      return this.user.buttons
+    } else {
+      return this.user.buttons.filter(button =>
+        this.filterButtonIds.has(button.id)
+      )
+    }
   }
 }
 
