@@ -36,8 +36,9 @@ https://buttons.kt3k.org/
 
 ## Frontend tools
 
-- capsid.js ( https://capsid.js.org/ )
-- cal-heatmap ( https://cal-heatmap.com/ )
+- capsid.js ( component based dom programming https://capsid.js.org/ )
+- cal-heatmap ( calendar heatmap https://cal-heatmap.com/ )
+- bulma ( css framework https://bulma.io/ )
 
 ## datetime
 
