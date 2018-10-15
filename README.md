@@ -1,4 +1,4 @@
-# buttons
+# 🌱buttons
 
 https://buttons.kt3k.org/
 
@@ -9,11 +9,12 @@ https://buttons.kt3k.org/
 
 # High level Architecture
 
-## BaaS
+## Infrastructure
 
 - Now ( web server https://zeit.co/now )
 - Auth0 ( id https://auth0.com/ )
-- mlab ( mongodb https://mlab.com/ )
+- mlab ( mongodb as a service https://mlab.com/ )
+- Netlify ( static site hosting https://netlify.com/ )
 
 ## Archtecture
 
