@@ -21,7 +21,7 @@ class SingleButtonSettings {
           <input class="input" name="name" placeholder="Name" />
         </p>
         <p class="control">
-          <button class="button is-primary save-button">Save</button>
+          <button class="button save-button">Save</button>
         </p>
         <p class="control">
           <button class="button is-danger delete-button">Delete</button>
@@ -49,7 +49,13 @@ class SingleButtonSettings {
   }
 
   stopLoading (el) {
+    el.classList.toggle('is-primary', false)
     el.classList.toggle('is-loading', false)
+  }
+
+  @on('input', { at: 'input, textarea' })
+  onInput () {
+    this.saveButton.classList.toggle('is-primary', true)
   }
 
   @on.click.at('.save-button')
