@@ -21,6 +21,7 @@ const paths = {
 
 bulbo.dest('build')
 bulbo.base(src)
+bulbo.port(7010)
 
 asset(paths.js.entrypoint)
   .watch(paths.js.src)
