@@ -131,19 +131,19 @@ class UserProfile {
           <div class="media">
             <div class="media-left">
               <div class="buttons has-addons">
-                <span class="button sign-button"><!--${Sign.UNCHECKED}--></span>
+                <span class="button sign-button"></span>
                 <span class="button check-button" data-button-id="${
   button.id
-}">${button.name}</span>
+}"></span>
               </div>
             </div>
           </div>
-          <div class="content">
-            ${button.description}
-          </div>
+          <div class="content button-description"></div>
         </div>
       `
       div.classList.add('card')
+      div.querySelector('.check-button').textContent = button.name
+      div.querySelector('.button-description').textContent = button.description
 
       this.buttonsArea.appendChild(div)
     })
