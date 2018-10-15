@@ -4,3 +4,4 @@ if (!process.env.API_ROOT) {
 
 exports.API_ROOT = process.env.API_ROOT
 exports.Action = require('./action')
+exports.Sign = require('./sign')

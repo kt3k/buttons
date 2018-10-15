@@ -2,6 +2,7 @@ const { component, wired, on } = require('capsid')
 const { format } = require('date-fns')
 const api = require('../../util/api')
 const insertCss = require('insert-css')
+const { Sign } = require('../../const')
 
 insertCss(`
 .the-button .sign-button {
@@ -73,7 +74,7 @@ class TheButton {
     this.checkButton.classList.toggle('is-unchecked', !checked)
     this.checkButton.classList.toggle('is-checked', checked)
     this.checkButton.classList.toggle('is-info', checked)
-    this.signButton.textContent = checked ? '👍' : '🐹'
+    this.signButton.textContent = checked ? Sign.CHECKED : Sign.UNCHECKED
   }
 }
 

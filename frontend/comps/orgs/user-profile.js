@@ -1,13 +1,13 @@
 const { component, on, wired, notifies } = require('capsid')
 const api = require('../../util/api')
 const { getDisplayId } = require('../../util/path')
-const { Action } = require('../../const')
+const { Action, Sign } = require('../../const')
 const genel = require('genel')
 const insertCss = require('insert-css')
 
 const forEach = [].forEach
 const map = [].map
-const SELECTED_CLASS = 'is-danger'
+const SELECTED_CLASS = 'is-warning'
 
 insertCss(`
   .user-profile .sign-button {
@@ -15,6 +15,12 @@ insertCss(`
   }
   .user-profile .check-button {
     min-width: 120px;
+  }
+  .user-profile .sign-button::before {
+    content: '${Sign.UNCHECKED}'
+  }
+  .user-profile .sign-button.${SELECTED_CLASS}::before {
+    content: '${Sign.CHECKED}'
   }
 `)
 
@@ -125,7 +131,7 @@ class UserProfile {
           <div class="media">
             <div class="media-left">
               <div class="buttons has-addons">
-                <span class="button sign-button">🌴</span>
+                <span class="button sign-button"><!--${Sign.UNCHECKED}--></span>
                 <span class="button check-button" data-button-id="${
   button.id
 }">${button.name}</span>

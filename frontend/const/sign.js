@@ -1,0 +1,2 @@
+exports.CHECKED = '🌱'
+exports.UNCHECKED = '🌰'
