@@ -175,7 +175,7 @@ This runs local static site and lcoal api server.
 
 - Get the user's checks in the range of date
 
-## GET /users/:id/checks?d=YYYY-MM-DD
+## GET /users/:id/checks?d=YYYY-MM-DD - noauth
 
 - Get the user's check by the date
 
