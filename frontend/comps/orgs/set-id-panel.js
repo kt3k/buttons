@@ -18,7 +18,7 @@ class SetIdPanel {
     try {
       await api('put', '/users/self/id', { id: this.input.value })
       alert('ok!')
-      location.href = '/'
+      location.href = '/set-buttons.html'
     } catch (e) {
       console.log(e)
       alert("something's wrong. Try again")
