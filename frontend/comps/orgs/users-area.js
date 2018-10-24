@@ -11,7 +11,9 @@ class UsersArea {
     const { data: users } = await api('GET', '/users')
 
     users.forEach(user => {
-      this.createItem(user)
+      if (user.displayId) {
+        this.createItem(user)
+      }
     })
   }
 
