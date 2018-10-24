@@ -4,6 +4,7 @@ const { handleApiError } = require('../util/api')
 const { User, Button, Check } = require('../domain')
 
 const services = {
+  User,
   userRepository: new User.Repository(),
   userInitService: new User.InitService(),
   userButtonService: new User.ButtonService(),

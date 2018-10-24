@@ -9,6 +9,8 @@ const { ApiError } = require('../../util/api')
 const { User } = require('../../domain')
 const userRepository = new User.Repository()
 
+const services = { User, userRepository }
+
 describe('PUT /users/self/id', () => {
   it("modifies the user's id", async () => {
     const req = new Req()
@@ -18,7 +20,7 @@ describe('PUT /users/self/id', () => {
 
     await new User.InitService().getOrCreate({ sub: 'id-test|123' })
 
-    await api.put({ userRepository })(req, res)
+    await api.put(services)(req, res)
 
     assert.strictEqual(res.statusCode, 200)
 
@@ -35,11 +37,27 @@ describe('PUT /users/self/id', () => {
     req.body = {}
 
     try {
-      await api.put({ userRepository })(req, res)
+      await api.put(services)(req, res)
       return new Error('The api should throw')
     } catch (e) {
       assert(e instanceof ApiError)
       assert.strictEqual(e.message, 'The id parameter is missing')
+    }
+  })
+
+  it('throws if the id parameter is invalid', async () => {
+    const req = new Req()
+    const res = new Res()
+
+    req.user = { sub: 'github|123' }
+    req.body = { id: '-a' }
+
+    try {
+      await api.put(services)(req, res)
+      return new Error('The api should throw')
+    } catch (e) {
+      assert(e instanceof ApiError)
+      assert.strictEqual(e.message, 'The id parameter is invalid')
     }
   })
 
@@ -51,7 +69,7 @@ describe('PUT /users/self/id', () => {
     req.body = { id: 'foo' }
 
     try {
-      await api.put({ userRepository })(req, res)
+      await api.put(services)(req, res)
       return new Error('The api should throw')
     } catch (e) {
       assert(e instanceof ApiError)

@@ -1,3 +1,5 @@
+const RE_VALID_DISPLAY_ID = /^[0-9a-z][0-9a-z_-]*$/
+
 /**
  * The user model
  */
@@ -18,6 +20,10 @@ class User {
     this.displayId = displayId
     this.displayName = displayName
     this.buttons = buttons
+  }
+
+  static isValidDisplayId (displayId) {
+    return RE_VALID_DISPLAY_ID.test(displayId)
   }
 }
 
