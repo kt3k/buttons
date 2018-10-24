@@ -28,6 +28,7 @@ asset(paths.js.entrypoint)
   .pipe(bundle({ transform: [['envify', { global: true }], 'babelify'] }))
 
 asset(paths.html)
+  .watch(paths.html, paths.layout)
   .pipe(frontmatter({ property: 'fm' }))
   .pipe(nunjucks({ basepath: process.env.BASEPATH || '' }))
   .pipe(
