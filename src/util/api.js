@@ -53,9 +53,10 @@ exports.handleApiError = handler => async (req, res) => {
  */
 exports.userToUserDto = user => ({
   id: user.id,
+  picture: user.picture,
   displayId: user.displayId,
   displayName: user.displayName,
-  picture: user.picture
+  bio: user.bio
 })
 
 /**
@@ -65,9 +66,10 @@ exports.userToUserDto = user => ({
  */
 exports.userToUserDtoWithButtons = user => ({
   id: user.id,
+  picture: user.picture,
   displayId: user.displayId,
   displayName: user.displayName,
-  picture: user.picture,
+  bio: user.bio,
   buttons: user.buttons.map(button => ({
     id: button.id,
     name: button.name,

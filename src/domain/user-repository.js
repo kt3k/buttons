@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   authDataJson: String,
   displayId: String,
   displayName: String,
+  bio: String,
   buttonIds: [String]
 })
 
@@ -30,6 +31,7 @@ class UserRepository {
           authData: JSON.stringify(user.authData),
           displayId: user.displayId,
           displayName: user.displayName,
+          bio: user.bio,
           buttonIds: user.buttons.map(button => button.id)
         },
         { upsert: true },
@@ -89,6 +91,7 @@ class UserRepository {
       authData,
       displayId: userObj.displayId,
       displayName: userObj.displayName,
+      bio: userObj.bio,
       buttons
     })
   }
@@ -101,6 +104,7 @@ class UserRepository {
       authData: {},
       displayId: userObj.displayId,
       displayName: userObj.displayName,
+      bio: userObj.bio,
       buttons: []
     })
   }

@@ -135,6 +135,10 @@ This runs local static site and lcoal api server.
 
 - Get the authenticated user
 
+## PUT /users/self - auth
+
+- Modify the authenticated user
+
 ## PUT /users/self/id - auth
 
 - Sets the display

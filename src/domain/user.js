@@ -11,6 +11,7 @@ class User {
     authData,
     displayId,
     displayName,
+    bio,
     buttons
   }) {
     this.id = id
@@ -19,6 +20,7 @@ class User {
     this.authData = authData
     this.displayId = displayId
     this.displayName = displayName
+    this.bio = bio
     this.buttons = buttons
   }
 
@@ -26,5 +28,9 @@ class User {
     return RE_VALID_DISPLAY_ID.test(displayId)
   }
 }
+
+User.BIO_MAX = 3000
+User.DISPLAY_ID_MAX = 100
+User.DISPLAY_NAME_MAX = 100
 
 module.exports = User

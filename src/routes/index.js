@@ -27,11 +27,11 @@ module.exports = app => {
   app.get('/users', handleApiError(require('./users').get(services)))
 
   // Gets myself
-  app.options('/users/self', allowMethods('GET'), ok)
+  app.options('/users/self', allowMethods('GET,PUT'), ok)
   app.get(
     '/users/self',
     checkJwt,
-    handleApiError(require('./users-self')(services))
+    handleApiError(require('./users-self').get(services))
   )
 
   app.options('/users/self/id', allowMethods('PUT'), ok)
