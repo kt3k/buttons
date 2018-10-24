@@ -7,14 +7,21 @@ class UsersArea {
   @wired('.user-list')
   get userList () {}
 
+  @wired('.user-count')
+  get userCountLabel () {}
+
   async __mount__ () {
     const { data: users } = await api('GET', '/users')
+    let count = 0
 
     users.forEach(user => {
       if (user.displayId) {
+        count++
         this.createItem(user)
       }
     })
+
+    this.userCountLabel.textContent = count
   }
 
   createItem (user) {
