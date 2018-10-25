@@ -26,7 +26,7 @@ You can use _ and - in the middle of the id.`)
     try {
       await api('put', '/users/self/id', { id: this.input.value })
       alert('ok!')
-      location.href = '/set-buttons.html'
+      location.href = '/settings.html'
     } catch (e) {
       console.log(e)
       alert("something's wrong. Try again")

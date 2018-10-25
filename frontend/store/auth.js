@@ -35,7 +35,7 @@ class UserModule {
     }
 
     if (self.buttons == null || self.buttons.length === 0) {
-      shouldBeIn('/set-buttons.html')
+      shouldBeIn('/settings.html')
 
       return
     }

@@ -12,11 +12,11 @@ class ButtonSettings {
     const { data: buttons } = await api('GET', '/users/self/buttons')
 
     this.el.innerHTML = `
+      <a class="button" href="./">Back</a>
       <h2></h2>
       <hr />
       <div class="single-settings-area"></div>
-      <button class="button is-primary create-button">Create</button>
-      <a class="button" href="./">Back</a>
+      <button class="button is-primary create-button">Create a new button</button>
     `
     this.updateTitle(buttons)
 

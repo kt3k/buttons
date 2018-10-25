@@ -125,9 +125,9 @@ This runs local static site and lcoal api server.
 
 - The settings of displayId on onboarding steps
 
-## /set-buttons.html - auth
+## /settings.html - auth
 
-- The settings of buttons on onboarding steps
+- The settings of buttons and profile
 
 # APIs
 
@@ -199,7 +199,7 @@ This runs local static site and lcoal api server.
 - Auth0 login
 - Go to /set-id.html
 - Take displayId
-- Go to /set-buttons.html
+- Go to /settings.html
 - Set up 1 - 4 buttons
 - Go to /
 - Done
@@ -212,13 +212,13 @@ This runs local static site and lcoal api server.
 
 ## Browse my checks
 
-- Go to /checks
+- Go to /
 - Browse my checks
 - Done
 
 ## Browse someone's checks
 
-- Go to /users
+- Go to /users.html
 - See the list of users
 - Select the name of a user
 - Go to /:user/checks
@@ -227,7 +227,14 @@ This runs local static site and lcoal api server.
 
 ## Modify my buttons
 
-- Go to /set-buttons.html
+- Go to /settings.html
 - Modify my buttons
+- Push save button
+- Done
+
+## Modify my profile
+
+- Go to /settings.html
+- Modify my profile
 - Push save button
 - Done
