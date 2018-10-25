@@ -5,6 +5,7 @@ const layout1 = require('layout1')
 const nunjucks = require('gulp-nunjucks-render')
 const frontmatter = require('gulp-front-matter')
 const bundle = require('bundle-through')
+const uglify = require('gulp-uglify-es').default
 
 const src = 'frontend'
 
@@ -26,6 +27,7 @@ bulbo.port(7010)
 asset(paths.js.entrypoint)
   .watch(paths.js.src)
   .pipe(bundle({ transform: [['envify', { global: true }], 'babelify'] }))
+  .pipe(uglify())
 
 asset(paths.html)
   .watch(paths.html, paths.layout)

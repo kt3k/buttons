@@ -10,3 +10,6 @@
 # nyc
 /coverage
 /.nyc_output
+
+# bundle analyze
+/disc.html
