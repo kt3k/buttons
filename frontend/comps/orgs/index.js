@@ -1,5 +1,6 @@
 require('./set-id-panel')
 require('./button-settings')
+require('./profile-settings')
 require('./single-button-settings')
 require('./nav-settings-area')
 require('./main-buttons-area')

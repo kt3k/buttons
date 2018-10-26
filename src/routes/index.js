@@ -33,6 +33,11 @@ module.exports = app => {
     checkJwt,
     handleApiError(require('./users-self').get(services))
   )
+  app.put(
+    '/users/self',
+    checkJwt,
+    handleApiError(require('./users-self').put(services))
+  )
 
   app.options('/users/self/id', allowMethods('PUT'), ok)
   app.put(

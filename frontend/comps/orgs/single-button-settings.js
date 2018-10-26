@@ -13,6 +13,7 @@ class SingleButtonSettings {
   get saveButton () {}
   @wired('.delete-button')
   get deleteButton () {}
+
   __mount__ () {
     this.el.innerHTML = `
       <p><small class="button-id has-text-grey-light has-text-weight-bold is-italic"></small></p>
