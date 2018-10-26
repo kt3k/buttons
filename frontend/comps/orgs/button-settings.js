@@ -9,10 +9,11 @@ class ButtonSettings {
   get singleSettingsArea () {}
 
   async __mount__ () {
+    this.el.innerHTML = `<button class="button is-loading is-white">Loading</button>`
+
     const { data: buttons } = await api('GET', '/users/self/buttons')
 
     this.el.innerHTML = `
-      <a class="button" href="./">Back</a>
       <h2></h2>
       <hr />
       <div class="single-settings-area"></div>
