@@ -37,8 +37,6 @@ describe('CheckRepository', () => {
         parse('2018-01-08')
       )
 
-      console.log(records)
-
       assert(Array.isArray(records))
       assert.strictEqual(records.length, 3)
       assert(records[0] instanceof DailyCheckRecord)

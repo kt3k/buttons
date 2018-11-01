@@ -9,4 +9,8 @@ class Activity {
   }
 }
 
+Activity.PUSH = 'push' // When the user pushed the button
+Activity.CREATE = 'create' // When the user created a new button
+Activity.JOIN = 'join' // When the user joined the service
+
 module.exports = Activity
