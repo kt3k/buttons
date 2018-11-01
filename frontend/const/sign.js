@@ -1,2 +1,2 @@
-exports.CHECKED = '🎃'
+exports.CHECKED = '🎄'
 exports.UNCHECKED = '🌰'
