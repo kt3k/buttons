@@ -82,4 +82,14 @@ describe('UserRepository', () => {
       assert(users[0] instanceof User)
     })
   })
+
+  describe('getByIds', () => {
+    it('gets the users by the ids', async () => {
+      const user0 = await repository.getByDisplayId('foo')
+      const users = await repository.getByIds([user0.id])
+
+      assert.strictEqual(users.length, 1)
+      assert.strictEqual(users[0].authId, user0.authId)
+    })
+  })
 })

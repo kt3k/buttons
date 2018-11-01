@@ -118,9 +118,19 @@ class UserRepository {
       .limit(1000)
       .exec()
 
-    return userArray.map(userObj =>
-      this.constructor.userObjToUserWithoutButtons(userObj)
-    )
+    return userArray.map(this.constructor.userObjToUserWithoutButtons)
+  }
+
+  /**
+   * @param {string[]}
+   * @return {User[]}
+   */
+  async getByIds (ids) {
+    const userArray = await UserODM.find({
+      _id: { $in: ids.map(mongoose.Types.ObjectId) }
+    }).exec()
+
+    return userArray.map(this.constructor.userObjToUserWithoutButtons)
   }
 }
 
