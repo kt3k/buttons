@@ -11,7 +11,8 @@ const services = {
   buttonRepository: new Button.Repository(),
   checkRepository: new Check.Repository(),
   checkService: new Check.Service(),
-  activityRepository: new Activity.Repository()
+  activityRepository: new Activity.Repository(),
+  activityService: new Activity.Service()
 }
 
 module.exports = app => {

@@ -2,10 +2,12 @@ const { ApiError } = require('../util/api')
 const { isValidDateStr } = require('../util/date')
 const { parse } = require('date-fns')
 
-exports.check = ({ userRepository, buttonRepository, checkService }) => async (
-  req,
-  res
-) => {
+exports.check = ({
+  userRepository,
+  buttonRepository,
+  checkService,
+  activityService
+}) => async (req, res) => {
   const authId = req.user.sub
   const user = await userRepository.getByAuthId(authId)
 
@@ -27,6 +29,11 @@ exports.check = ({ userRepository, buttonRepository, checkService }) => async (
   }
 
   await checkService.check(button.id, parse(d))
+
+  // Don't await
+  setTimeout(() => {
+    activityService.createPushActivity(user, button)
+  })
 
   res.status(204).send('')
 }
