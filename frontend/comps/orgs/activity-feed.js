@@ -3,7 +3,7 @@ const api = require('../../util/api')
 const { createProfilePath } = require('../../util/path')
 const genel = require('genel')
 const { CHECKED, BUTTON_CREATED } = require('../../const/sign')
-const format = require('date-fns/format')
+const distanceInWords = require('date-fns/distance_in_words')
 
 @component('activity-feed')
 class ActivityFeed {
@@ -37,7 +37,6 @@ class ActivityFeed {
   createPushActivityItem (activity) {
     const displayId = activity.user.displayId
     const buttonName = activity.button.name
-    const date = format(Date.parse(activity.date), 'YYYY-MM-DD hh:mm')
 
     if (!buttonName || !displayId) {
       return
@@ -45,11 +44,10 @@ class ActivityFeed {
 
     const p = genel.p`
       ${CHECKED}
-      <a href="${createProfilePath(displayId)}">
-        <strong class="user-display-id">@${displayId}</strong></a>
+      ${this.constructor.createUserHtml(displayId)}
       pushed
       <strong class="button-name"></strong>
-      <small class="has-text-grey">${date}</small>
+      ${this.constructor.createDateHtml(activity.date)}
     `
 
     p.querySelector('.button-name').textContent = `${buttonName}`
@@ -59,7 +57,6 @@ class ActivityFeed {
   createCreateActivityItem (activity) {
     const displayId = activity.user.displayId
     const buttonName = activity.button.name
-    const date = format(Date.parse(activity.date), 'YYYY-MM-DD hh:mm')
 
     if (!buttonName || !displayId) {
       return
@@ -67,15 +64,31 @@ class ActivityFeed {
 
     const p = genel.p`
       ${BUTTON_CREATED}
-      <a href="${createProfilePath(displayId)}">
-        <strong class="user-display-id">@${displayId}</strong></a>
+      ${this.constructor.createUserHtml(displayId)}
       created
       <strong class="button-name"></strong>
-      <small class="has-text-grey">${date}</small>
+      ${this.constructor.createDateHtml(activity.date)}
     `
     p.querySelector('.button-name').textContent = `${buttonName}`
 
     return p
+  }
+
+  static createUserHtml (displayId) {
+    return `
+      <a href="${createProfilePath(displayId)}">
+        <strong class="user-display-id">@${displayId}</strong></a>
+    `
+  }
+
+  /**
+   * @param {string} date The date in string format
+   * @return {string} The html
+   */
+  static createDateHtml (date) {
+    const distance = distanceInWords(new Date(), Date.parse(date))
+
+    return `<small class="has-text-grey">${distance}</small>`
   }
 }
 
