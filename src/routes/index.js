@@ -1,7 +1,7 @@
 const { checkJwt } = require('../util/jwt')
 const { corsOk, allowMethods, ok } = require('../util/routes')
 const { handleApiError } = require('../util/api')
-const { User, Button, Check } = require('../domain')
+const { User, Button, Check, Activity } = require('../domain')
 
 const services = {
   User,
@@ -10,7 +10,8 @@ const services = {
   userButtonService: new User.ButtonService(),
   buttonRepository: new Button.Repository(),
   checkRepository: new Check.Repository(),
-  checkService: new Check.Service()
+  checkService: new Check.Service(),
+  activityRepository: new Activity.Repository()
 }
 
 module.exports = app => {
@@ -97,4 +98,11 @@ module.exports = app => {
   // Gets the user
   app.options('/users/:id', allowMethods('GET'), ok)
   app.get('/users/:id', handleApiError(require('./users-id').get(services)))
+
+  // Gets the recent activity
+  app.options('/activities/recent', allowMethods('GET'), ok)
+  app.get(
+    '/activities/recent',
+    handleApiError(require('./activities-recent')(services))
+  )
 }

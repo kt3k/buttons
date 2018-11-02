@@ -76,3 +76,17 @@ exports.userToUserDtoWithButtons = user => ({
     description: button.description
   }))
 })
+
+exports.activityToActivityDto = activity => {
+  const userDto = activity.user ? exports.userToUserDto(activity.user) : null
+  const buttonDto = activity.button ? { name: activity.button.name } : null
+
+  return {
+    id: activity.id,
+    type: activity.type,
+    user: userDto,
+    button: buttonDto,
+    date: activity.date,
+    info: activity.info
+  }
+}

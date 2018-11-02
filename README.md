@@ -183,6 +183,10 @@ This runs local static site and lcoal api server.
 
 - Get the user's check by the date
 
+## GET /activities/recent
+
+- Get recent activities.
+
 ## PUT /buttons/:id/checks/:id
 
 - Modify the check by the id
