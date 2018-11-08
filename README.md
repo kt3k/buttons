@@ -7,7 +7,37 @@ https://buttons.kt3k.org/
 [![CircleCI](https://circleci.com/gh/kt3k/buttons.svg?style=svg)](https://circleci.com/gh/kt3k/buttons)
 [![codecov](https://codecov.io/gh/kt3k/buttons/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/buttons)
 
+# What is it?
+
+🌱 buttons is a web service to help you keep doing things everyday, especially the things which you tend to forget to do, but is beneficial if you do it everyday. Typical examples are learning language, learning music, workout etc.
+
+The followings are examples of tasks:
+
+- Learn a word in Spanish.
+- Learn a Chinese character.
+- Read a chapter of Bible.
+- Play a piano.
+- Work out.
+
+## How to
+
+How to set up tasks in 🌱 buttons? The followings are guidelines:
+
+- Do:
+  - Create a task easy to accomplish (in less than 10 min.).
+  - Create a creative, constructive task.
+  - Create a task easy to start.
+  - Revisit the definition of tasks continuously and keep them in reasonable and meaningful state.
+- Don't
+  - Create a task too difficult to accomplish in a single day. (ex. `Post an blog article` is too difficult. `Write a part of article` is a better alternative.)
+  - Create a task hard to keep doing everyday. (ex. `Climb a mountain` if you're not a moutain guide.)
+  - Make a (difficult) finish condition. (ex `Win 3 games in row on Splatoon`)
+
+[Let's start!](https://buttons.kt3k.org/)
+
 # High level Architecture
+
+🌱 buttons is a live web service, and its source code, architecture, and documentation are available online on github.
 
 ## Infrastructure
 
