@@ -4,7 +4,7 @@ const Req = require('mock-express-request')
 const Res = require('mock-express-response')
 const { parse } = require('date-fns')
 
-const { User, Button, Check } = require('../../domain')
+const { User, Button, Check, Activity } = require('../../domain')
 
 const userRepository = new User.Repository()
 const checkRepository = new Check.Repository()
@@ -12,7 +12,8 @@ const checkRepository = new Check.Repository()
 const services = {
   userRepository,
   buttonRepository: new Button.Repository(),
-  checkService: new Check.Service()
+  checkService: new Check.Service(),
+  activityService: new Activity.Service()
 }
 
 const api = require('../users-self-buttons-id-check')
