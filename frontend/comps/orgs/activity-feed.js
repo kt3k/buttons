@@ -86,7 +86,9 @@ class ActivityFeed {
    * @return {string} The html
    */
   static createDateHtml (date) {
-    const distance = distanceInWords(new Date(), Date.parse(date))
+    const distance = distanceInWords(new Date(), Date.parse(date), {
+      addSuffix: true
+    })
 
     return `<small class="has-text-grey">${distance}</small>`
   }
