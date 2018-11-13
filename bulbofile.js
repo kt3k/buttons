@@ -28,7 +28,7 @@ bulbo.port(7010)
 asset(paths.js.entrypoint)
   .watch(paths.js.src)
   .pipe(bundle({ transform: [['envify', { global: true }], 'babelify'] }))
-  .pipe(gulpif(process.env.NODE_ENV === 'production', uglify()))
+  .pipe(gulpif(process.env.BUILD_TARGET === 'production', uglify()))
 
 asset(paths.html)
   .watch(paths.html, paths.layout)
