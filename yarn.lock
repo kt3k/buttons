@@ -3395,21 +3395,20 @@ gulp-sourcemaps@^2.0.0-alpha:
     strip-bom-string "1.X"
     through2 "2.X"
 
+gulp-terser@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/gulp-terser/-/gulp-terser-1.1.5.tgz#7cf3c890ab6757f6aedf8e6b8923295f6b8676e5"
+  dependencies:
+    plugin-error "^1.0.1"
+    terser "^3.8.2"
+    through2 "^2.0.3"
+    vinyl-sourcemaps-apply "^0.2.1"
+
 gulp-trimlines@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gulp-trimlines/-/gulp-trimlines-1.0.1.tgz#7b17916b850ca0f05af4190dd24e9ac1e26e9f26"
   dependencies:
     through2 "^0.6.3"
-
-gulp-uglify-es@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/gulp-uglify-es/-/gulp-uglify-es-1.0.4.tgz#59ee0d5ea98c1e09c6eaa58c8b018a6ad33f48d4"
-  dependencies:
-    o-stream "^0.2.2"
-    plugin-error "^1.0.1"
-    terser "^3.7.5"
-    vinyl "^2.1.0"
-    vinyl-sourcemaps-apply "^0.2.1"
 
 gulp-util@^3.0.3, gulp-util@^3.0.6:
   version "3.0.8"
@@ -5339,10 +5338,6 @@ nyc@^13.0.1:
     yargs "11.1.0"
     yargs-parser "^9.0.2"
 
-o-stream@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/o-stream/-/o-stream-0.2.2.tgz#7fe03af870b8f9537af33b312b381b3034ab410f"
-
 oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
@@ -7061,9 +7056,9 @@ ternary-stream@^2.0.1:
     merge-stream "^1.0.0"
     through2 "^2.0.1"
 
-terser@^3.7.5:
-  version "3.10.11"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-3.10.11.tgz#e063da74b194dde9faf0a561f3a438c549d2da3f"
+terser@^3.8.2:
+  version "3.10.12"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-3.10.12.tgz#06d40765e40b33fd97977c0896c75b2b5d42142d"
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
@@ -7608,7 +7603,7 @@ vinyl@^1.0.0:
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
 
-vinyl@^2.0.0, vinyl@^2.1.0:
+vinyl@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-2.2.0.tgz#d85b07da96e458d25b2ffe19fece9f2caa13ed86"
   dependencies:

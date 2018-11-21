@@ -5,7 +5,7 @@ const layout1 = require('layout1')
 const nunjucks = require('gulp-nunjucks-render')
 const frontmatter = require('gulp-front-matter')
 const bundle = require('bundle-through')
-const uglify = require('gulp-uglify-es').default
+const terser = require('gulp-terser')
 const gulpif = require('gulp-if')
 
 const src = 'frontend'
@@ -33,7 +33,7 @@ asset(paths.js.entrypoint)
       fullPaths: process.env.DISC === 'true'
     })
   )
-  .pipe(gulpif(process.env.BUILD_TARGET === 'production', uglify()))
+  .pipe(gulpif(process.env.BUILD_TARGET === 'production', terser()))
 
 asset(paths.html)
   .watch(paths.html, paths.layout)
