@@ -28,7 +28,21 @@
 > Builds static site
 
     npx domaindoc build
+    saku disc
     npx bulbo build
+
+# disc
+> Creates disc report
+
+    npx cross-env BUILD_TARGET=production DISC=true npx bulbo build
+    mkdir -p build/disc
+    npx discify build/index.js > build/disc/index.html
+
+# size
+> Builds production bundle and show the size
+
+    npx cross-env BUILD_TARGET=production npx bulbo build
+    npx gzip-size build/index.js
 
 # serve-site
 > Serves the static site (for local dev)
