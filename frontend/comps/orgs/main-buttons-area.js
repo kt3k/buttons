@@ -1,5 +1,5 @@
 const { component, on, make, wired } = require('capsid')
-const { format } = require('date-fns')
+const format = require('date-fns/format')
 const { Action } = require('../../const')
 const api = require('../../util/api')
 

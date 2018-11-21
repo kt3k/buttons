@@ -1,4 +1,5 @@
-const { format, subYears } = require('date-fns')
+const format = require('date-fns/format')
+const subYears = require('date-fns/sub_years')
 
 const now = Date.now()
 exports.now = now

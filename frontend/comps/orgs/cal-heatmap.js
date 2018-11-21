@@ -1,6 +1,7 @@
 const { component, wired } = require('capsid')
 const Cal = require('cal-heatmap')
-const { subMonths, parse } = require('date-fns')
+const subMonths = require('date-fns/sub_months')
+const parse = require('date-fns/parse')
 
 @component('cal-heatmap')
 class CalHeatmap {
