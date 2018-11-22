@@ -33,6 +33,7 @@
 
 # prod-build
 > Builds in the production mode
+
     npx cross-env NODE_ENV=production saku build
 
 # disc
