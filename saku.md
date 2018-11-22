@@ -31,10 +31,14 @@
     saku disc
     npx bulbo build
 
+# prod-build
+> Builds in the production mode
+    npx cross-env NODE_ENV=production saku build
+
 # disc
 > Creates disc report
 
-    npx cross-env BUILD_TARGET=production DISC=true npx bulbo build
+    npx cross-env NODE_ENV=production DISC=true npx bulbo build
     mkdir -p build/disc
     npx discify build/index.js > build/disc/index.html
 

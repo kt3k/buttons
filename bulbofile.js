@@ -29,11 +29,15 @@ asset(paths.js.entrypoint)
   .watch(paths.js.src)
   .pipe(
     bundle({
-      transform: [['envify', { global: true }], 'babelify'],
+      transform: [
+        ['envify', { global: true }],
+        ['uglifyify', { global: true }],
+        'babelify'
+      ],
       fullPaths: process.env.DISC === 'true'
     })
   )
-  .pipe(gulpif(process.env.BUILD_TARGET === 'production', terser()))
+  .pipe(gulpif(process.env.NODE_ENV === 'production', terser()))
 
 asset(paths.html)
   .watch(paths.html, paths.layout)

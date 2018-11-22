@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "saku test",
-    "build-for-netlify": "cross-env API_ROOT=https://buttons-backend.now.sh saku build",
+    "build-for-netlify": "cross-env API_ROOT=https://buttons-backend.now.sh saku prod-build",
     "precommit": "lint-staged",
     "start": "node src/index.js"
   },
@@ -72,7 +72,7 @@
     "query-string": "^6.2.0",
     "saku": "^0.11.2",
     "standard": "^12.0.1",
-    "uglify-js": "^3.4.9"
+    "uglifyify": "^5.0.1"
   },
   "lint-staged": {
     "*.js": [

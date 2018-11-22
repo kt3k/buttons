@@ -1,2 +1,0 @@
-[context.master.environment]
-BUILD_TARGET = "production"
