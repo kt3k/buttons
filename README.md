@@ -5,7 +5,7 @@ https://buttons.kt3k.org/
 > Daily push buttons
 
 [![CircleCI](https://circleci.com/gh/kt3k/buttons.svg?style=svg)](https://circleci.com/gh/kt3k/buttons)
-[![codecov](https://codecov.io/gh/kt3k/buttons/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/buttons) [![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/buttons.svg)](https://greenkeeper.io/)
+[![codecov](https://codecov.io/gh/kt3k/buttons/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/buttons)
 
 # What is it?
 
