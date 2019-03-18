@@ -1,7 +1,8 @@
 const { Action } = require('../const')
 const api = require('../util/api')
 const { action, dispatches } = require('evex')
-const { isAuthenticated } = require('../util/web-auth')
+const webAuth = require('../util/web-auth')
+const { isAuthenticated, setSession } = webAuth
 
 /**
  * TODO: verify id_token
@@ -14,13 +15,32 @@ const verifier = new IdTokenVerifier({
 */
 
 class UserModule {
+  async checkSession () {
+    return new Promise((resolve, reject) => {
+      webAuth.checkSession({}, (err, authResult) => {
+        if (err && err.error === 'login_required') {
+          return resolve() // session expired
+        } else if (err) {
+          return reject(err) // unknown error
+        }
+
+        setSession(authResult)
+        resolve()
+      })
+    })
+  }
+
   @action(Action.REQUEST_AUTH)
   @dispatches(Action.AUTH_READY)
   async requestAuth () {
     if (!isAuthenticated()) {
-      shouldBeIn('/')
+      await this.checkSession()
 
-      return null
+      if (!isAuthenticated()) {
+        shouldBeIn('/')
+
+        return null
+      }
     }
 
     const { data: self } = await api(
