@@ -14,6 +14,7 @@ const paths = {
   html: `${src}/*.html`,
   layout: `${src}/layout.njk`,
   css: `${src}/css/**/*.css`,
+  img: `${src}/img/**/*.*`,
   vendor: `${src}/vendor/**/*.*`,
   js: {
     entrypoint: `${src}/index.js`,
@@ -50,4 +51,5 @@ asset(paths.html)
   )
 
 asset(paths.css)
+asset(paths.img)
 asset(paths.vendor)
