@@ -14,7 +14,7 @@ const paths = {
   html: `${src}/*.html`,
   layout: `${src}/layout.njk`,
   css: `${src}/css/**/*.css`,
-  img: `${src}/img/**/*.*`,
+  img: `${src}/img/**/*.png`,
   vendor: `${src}/vendor/**/*.*`,
   js: {
     entrypoint: `${src}/index.js`,
