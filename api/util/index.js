@@ -1,3 +1,6 @@
+const { send } = require('./micro')
+const { CODE_INTERNAL_SERVER_ERROR } = require('./error-code')
+
 class ApiError extends Error {
   /**
    *
@@ -15,20 +18,18 @@ class ApiError extends Error {
 
 exports.ApiError = ApiError
 
-const CODE_INTERNAL_SERVER_ERROR = 1
-
 /**
  * @param {Function} handler Route handler
  * @param {HttpRequest} req
  * @param {HttpResponse} res
  * @return {Function}
  */
-exports.handleApiError = handler => async (req, res) => {
+const handleApiError = handler => async (req, res) => {
   try {
     await handler(req, res)
   } catch (e) {
     if (e instanceof ApiError) {
-      res.status(e.status).json({
+      send(res, e.status, {
         message: e.message,
         code: e.code
       })
@@ -39,7 +40,7 @@ exports.handleApiError = handler => async (req, res) => {
     console.log(e)
 
     // TODO: Logs this error in an appropriate way
-    res.status(503).json({
+    send(res, 503, {
       message: 'Internal Server Error',
       code: CODE_INTERNAL_SERVER_ERROR
     })
@@ -90,3 +91,33 @@ exports.activityToActivityDto = activity => {
     info: activity.info
   }
 }
+
+const allowCors = handler => (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN)
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization,Content-Type')
+  return handler(req, res)
+}
+
+const allowMethods = (...methods) => (_, res) => {
+  res.setHeader('Access-Control-Allow-Methods', methods.join(',').toUpperCase())
+  send(res, 200)
+}
+
+const methods = map => (req, res) => {
+  const fn = map[req.method.toLowerCase()]
+  if (!fn) {
+    send(res, 405)
+    return
+  }
+  return fn(req, res)
+}
+
+exports.wrap = routes =>
+  allowCors(
+    handleApiError(
+      methods({
+        ...routes,
+        options: allowMethods(...Object.keys(routes))
+      })
+    )
+  )

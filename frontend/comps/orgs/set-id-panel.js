@@ -1,6 +1,6 @@
 const api = require('../../util/api')
 const { component, on, wired } = require('capsid')
-const User = require('../../../src/domain/user')
+const User = require('../../../domain/user')
 
 @component('set-id-panel')
 class SetIdPanel {
