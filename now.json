@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "name": "buttons-backend",
   "alias": "buttons-backend",
   "env": {
