@@ -6,7 +6,6 @@
   "scripts": {
     "test": "saku test",
     "build-for-netlify": "cross-env API_ROOT=https://buttons-backend.now.sh saku prod-build",
-    "precommit": "lint-staged",
     "start": "node src/index.js"
   },
   "repository": {
@@ -95,5 +94,10 @@
     "env": [
       "browser"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
