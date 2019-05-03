@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "saku test",
-    "build-for-netlify": "cross-env API_ROOT=https://buttons-backend.now.sh saku prod-build",
+    "build-for-netlify": "cross-env API_ROOT=https://buttons-api.kt3k.now.sh saku prod-build",
     "start": "node src/index.js"
   },
   "repository": {
