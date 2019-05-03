@@ -1,0 +1,6 @@
+/mongo-data
+/node_modules
+/.git
+*.swp
+/frontend
+/build

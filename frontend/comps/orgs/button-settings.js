@@ -43,7 +43,7 @@ class ButtonSettings {
 
   @on.click.at('.create-button')
   async onCreate () {
-    const { data: button } = await api('POST', '/users/self/buttons')
+    const { data: button } = await api('POST', '/users/self/buttons', {})
     this.appendSingleButtonSettings(button)
   }
 }

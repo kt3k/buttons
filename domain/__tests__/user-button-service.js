@@ -21,7 +21,7 @@ describe('UserButtonService', () => {
 
       const user1 = await userRepository.getByAuthId('github|123')
 
-      assert.strictEqual(user1.buttons.length, 3) // This user has a button at the start
+      assert.strictEqual(user1.buttons.length, 4) // This user has 2 buttons at the start
     })
   })
 

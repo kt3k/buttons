@@ -6,7 +6,7 @@
 # kocha
 > Runs [kocha](https://npm.im/kocha) unit test
 
-    npx cross-env MONGODB=mongodb://localhost:27017/test-buttons-backend npx kocha --require src/__tests__/helper.js "src/**/__tests__/*.js"
+    npx cross-env SKIP_JWT_VERIFY=true MONGODB=mongodb://localhost:27017/test-buttons-backend npx kocha --require api/test-helper.js "domain/**/__tests__/*.js" "api/*.test.js"
 
 # kocha-wait
 > Runs kocha testing after some delay
@@ -17,7 +17,7 @@
 # start
 > Starts the local dev env
 
-    saku -p -r serve-api serve-site
+    saku -p -r api website
 
 # mongo
 > Prepares mongodb for testing
@@ -49,15 +49,15 @@
     npx cross-env BUILD_TARGET=production npx bulbo build
     npx gzip-size build/index.js
 
-# serve-site
+# website
 > Serves the static site (for local dev)
 
     npx cross-env API_ROOT=http://localhost:3004 npx bulbo
 
-# serve-api
+# api
 > Serves the api (for local dev)
 
-    npx cross-env PORT=3004 ALLOW_ORIGIN=http://localhost:7010 MONGODB=mongodb://localhost:27017/buttons-backend node src/index.js
+    now dev --port 3004
 
 # deploy
 > Deploys the server to zeit now

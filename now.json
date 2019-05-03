@@ -1,10 +1,34 @@
 {
-  "version": 1,
-  "name": "buttons-backend",
-  "alias": "buttons-backend",
+  "version": 2,
+  "name": "buttons-api",
   "env": {
     "MONGODB": "@buttons-mongodb",
-    "ALLOW_ORIGIN": "https://buttons.kt3k.org",
-    "PORT": "80"
-  }
+    "ALLOW_ORIGIN": "https://buttons.kt3k.org"
+  },
+  "builds": [
+    { "src": "api/ok.js", "use": "@now/node" },
+    { "src": "api/activities-recent.js", "use": "@now/node" },
+    { "src": "api/users-id-checks.js", "use": "@now/node" },
+    { "src": "api/users-id.js", "use": "@now/node" },
+    { "src": "api/users-self-buttons-id-check.js", "use": "@now/node" },
+    { "src": "api/users-self-buttons-id-uncheck.js", "use": "@now/node" },
+    { "src": "api/users-self-buttons-id.js", "use": "@now/node" },
+    { "src": "api/users-self-buttons.js", "use": "@now/node" },
+    { "src": "api/users-self-id.js", "use": "@now/node" },
+    { "src": "api/users-self.js", "use": "@now/node" },
+    { "src": "api/users.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "^/$", "dest": "/api/ok.js" },
+    { "src": "^/activities/recent$", "dest": "/api/activities-recent.js" },
+    { "src": "^/users/self/buttons/[a-z0-9]+/check$", "dest": "/api/users-self-buttons-id-check.js" },
+    { "src": "^/users/self/buttons/[a-z0-9]+/uncheck$", "dest": "/api/users-self-buttons-id-uncheck.js" },
+    { "src": "^/users/self/buttons/[a-z0-9]+$", "dest": "/api/users-self-buttons-id.js" },
+    { "src": "^/users/self/buttons$", "dest": "/api/users-self-buttons.js" },
+    { "src": "^/users/self/id$", "dest": "/api/users-self-id.js" },
+    { "src": "^/users/self$", "dest": "/api/users-self.js" },
+    { "src": "^/users/[a-z0-9_-]+/checks$", "dest": "/api/users-id-checks.js" },
+    { "src": "^/users/[a-z0-9_-]+$", "dest": "/api/users-id.js" },
+    { "src": "^/users$", "dest": "/api/users.js" }
+  ]
 }

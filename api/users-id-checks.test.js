@@ -2,33 +2,29 @@ const { describe, it } = require('kocha')
 const assert = require('assert')
 const { parse } = require('date-fns')
 
-const { Check, User } = require('../../domain')
+const services = require('./util/services')
 
-const api = require('../users-id-checks')
+const api = require('./users-id-checks')
 
-const Req = require('mock-express-request')
-const Res = require('mock-express-response')
-
-const services = {
-  userRepository: new User.Repository(),
-  checkRepository: new Check.Repository(),
-  checkService: new Check.Service()
-}
+const Req = require('mock-req')
+const Res = require('mock-res')
 
 describe('GET /users/:id/checks?d=', () => {
   it('gets the checks of the user of the given id', async () => {
-    const req = new Req()
-    const res = new Res()
-
     const d = '2018-09-23'
 
     const user = await services.userRepository.getByAuthId('github|123')
     await services.checkService.check(user.buttons[0].id, parse(d))
 
-    req.params = { id: user.displayId }
-    req.query = { d }
+    const res = new Res()
 
-    await api.get(services)(req, res)
+    await api(
+      new Req({
+        method: 'GET',
+        url: `/users/${user.displayId}/checks?d=${d}`
+      }),
+      res
+    )
 
     assert.strictEqual(res.statusCode, 200)
     assert.deepStrictEqual(res._getJSON(), [
@@ -48,7 +44,6 @@ describe('GET /users/:id/checks?d=', () => {
 
 describe('GET /users/:id/checks?from=&to=', () => {
   it('gets the checks of the given range', async () => {
-    const req = new Req()
     const res = new Res()
 
     const user = await services.userRepository.getByAuthId('github|123')
@@ -70,10 +65,13 @@ describe('GET /users/:id/checks?from=&to=', () => {
     // await services.checkService.check(id0, parse('2016-01-09'))
     await services.checkService.check(id0, parse('2016-01-10'))
 
-    req.params = { id: user.displayId }
-    req.query = { from: '2016-01-06', to: '2016-01-09' }
-
-    await api.get(services)(req, res)
+    await api(
+      new Req({
+        method: 'GET',
+        url: `/users/${user.displayId}/checks?from=2016-01-06&to=2016-01-09`
+      }),
+      res
+    )
 
     assert.strictEqual(res.statusCode, 200)
     assert.deepStrictEqual(res._getJSON(), [
