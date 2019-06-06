@@ -5565,10 +5565,10 @@ methods@^1.1.1:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-micro-match@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/micro-match/-/micro-match-0.2.0.tgz#56c260bf9a3a34f42bc9db613de62cbdd1df5774"
-  integrity sha512-BcxPv/ocMU12ObTOiGRAc5xP4HfkpWrWpldNJzmpJpkLhQ9VJr8dSCN/iz2RYIKT2vJkVP8jdyEmCNA2n000dQ==
+micro-match@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/micro-match/-/micro-match-0.3.0.tgz#391d97c480adbdd6829c1bdbc400de64c6970dae"
+  integrity sha512-bTdKqout25iJm6g56RdiUkaQMDQeaWzqThwexiueWda3JySt0r3OJmdat3TWeXnZmbVLZ1RrvudysuUu4kBMAw==
 
 micro-query@^0.3.0:
   version "0.3.0"
