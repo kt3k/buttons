@@ -103,13 +103,13 @@ See [domaindoc](https://buttons.kt3k.org/domaindoc/).
 Start mongo in a terminal:
 
 ```
-saku mongo
+./sakuw mongo
 ```
 
 Then in a different console, run tests:
 
 ```
-saku kocha
+./sakuw kocha
 ```
 
 ## Start local server
@@ -117,13 +117,13 @@ saku kocha
 Start mongo:
 
 ```
-saku mongo
+./sakuw mongo
 ```
 
 Then in a different console, run the server:
 
 ```
-saku start
+./sakuw start
 ```
 
 This runs local static site and lcoal api server.
