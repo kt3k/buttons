@@ -43,12 +43,10 @@ async function post (req, res) {
     throw new ApiError(`Bad format date: ${d}`, CODE_BAD_REQUEST, 400)
   }
 
-  await checkService.check(button.id, parse(d))
+  const checkPromise = checkService.check(button.id, parse(d))
+  const activityPromise = activityService.createPushActivity(user, button)
 
-  // Don't await
-  setTimeout(() => {
-    activityService.createPushActivity(user, button)
-  })
+  await Promise.all([checkPromise, activityPromise])
 
   send(res, 204, '')
 }

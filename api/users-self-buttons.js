@@ -30,10 +30,7 @@ async function post (req, res) {
     description
   })
 
-  // Don't affect the api call
-  setTimeout(() => {
-    activityService.createCreateActivity(user, newButton)
-  })
+  await activityService.createCreateActivity(user, newButton)
 
   send(res, 200, newButton)
 }
