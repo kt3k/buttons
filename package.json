@@ -56,7 +56,7 @@
     "gulp-nunjucks-render": "^2.2.2",
     "gulp-terser": "^1.1.5",
     "gzip-size-cli": "^3.0.0",
-    "husky": "^2.0.0",
+    "husky": "^3.0.1",
     "idtoken-verifier": "^1.2.0",
     "insert-css": "^2.0.0",
     "kocha": "^1.9.1",
