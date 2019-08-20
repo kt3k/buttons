@@ -71,7 +71,7 @@
     "prettier": "^1.14.2",
     "query-string": "^6.2.0",
     "saku": "^0.11.2",
-    "standard": "^13.0.1",
+    "standard": "^14.0.0",
     "uglifyify": "^5.0.1"
   },
   "lint-staged": {
