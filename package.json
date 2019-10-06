@@ -49,7 +49,7 @@
     "disc": "^1.3.3",
     "domaindoc": "^3.0.3",
     "envify": "^4.1.0",
-    "evex": "^1.6.1",
+    "evex": "^2.1.0",
     "genel": "^1.1.1",
     "gulp-front-matter": "^1.3.0",
     "gulp-if": "^3.0.0",
