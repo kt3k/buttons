@@ -1,4 +1,4 @@
-const { parse, format, differenceInDays } = require('date-fns')
+const { parseISO, format, differenceInDays } = require('date-fns')
 const { isValidDateStr } = require('../util/date')
 const { ApiError, wrap } = require('./util')
 const { query, match, send } = require('./util/micro')
@@ -16,7 +16,7 @@ async function get (req, res) {
   if (isValidDateStr(d)) {
     const checks = await checkRepository.getByButtonIdsAndDate(
       buttonIds,
-      parse(d)
+      parseISO(d)
     )
     send(res, 200, checks.checks.map(checkToApiResult))
     return
@@ -30,10 +30,10 @@ async function get (req, res) {
     )
   }
 
-  const fromDate = parse(from)
-  const toDate = parse(to)
+  const fromDate = parseISO(from)
+  const toDate = parseISO(to)
 
-  if (differenceInDays(from, to) > 400) {
+  if (differenceInDays(fromDate, toDate) > 400) {
     throw new ApiError(`Too long range: ${from}/${to}`, CODE_BAD_REQUEST, 400)
   }
 
@@ -51,7 +51,7 @@ async function get (req, res) {
  * @return {Object}
  */
 const recordToApiResult = record => ({
-  date: format(record.date, 'YYYY-MM-DD'),
+  date: format(record.date, 'yyyy-MM-dd'),
   checks: record.checks.checks.map(checkToApiResult)
 })
 

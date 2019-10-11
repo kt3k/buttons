@@ -1,6 +1,6 @@
 const { describe, it } = require('kocha')
 const assert = require('assert')
-const { parse } = require('date-fns')
+const { parseISO } = require('date-fns')
 
 const services = require('./util/services')
 
@@ -14,7 +14,7 @@ describe('GET /users/:id/checks?d=', () => {
     const d = '2018-09-23'
 
     const user = await services.userRepository.getByAuthId('github|123')
-    await services.checkService.check(user.buttons[0].id, parse(d))
+    await services.checkService.check(user.buttons[0].id, parseISO(d))
 
     const res = new Res()
 
@@ -35,7 +35,7 @@ describe('GET /users/:id/checks?d=', () => {
 
     const checks = await services.checkRepository.getByButtonIdsAndDate(
       user.buttons[0].id,
-      parse(d)
+      parseISO(d)
     )
 
     assert.strictEqual(checks.length, 1)
@@ -51,19 +51,19 @@ describe('GET /users/:id/checks?from=&to=', () => {
     const id0 = user.buttons[0].id
     const id1 = user.buttons[1].id
 
-    await services.checkService.check(id0, parse('2016-01-05'))
-    await services.checkService.check(id0, parse('2016-01-06'))
-    // await services.checkService.check(id0, parse('2016-01-07'))
-    // await services.checkService.check(id0, parse('2016-01-08'))
-    await services.checkService.check(id0, parse('2016-01-09'))
-    await services.checkService.check(id0, parse('2016-01-10'))
+    await services.checkService.check(id0, parseISO('2016-01-05'))
+    await services.checkService.check(id0, parseISO('2016-01-06'))
+    // await services.checkService.check(id0, parseISO('2016-01-07'))
+    // await services.checkService.check(id0, parseISO('2016-01-08'))
+    await services.checkService.check(id0, parseISO('2016-01-09'))
+    await services.checkService.check(id0, parseISO('2016-01-10'))
 
-    await services.checkService.check(id1, parse('2016-01-05'))
-    await services.checkService.check(id1, parse('2016-01-06'))
-    // await services.checkService.check(id1, parse('2016-01-07'))
-    await services.checkService.check(id1, parse('2016-01-08'))
-    // await services.checkService.check(id0, parse('2016-01-09'))
-    await services.checkService.check(id0, parse('2016-01-10'))
+    await services.checkService.check(id1, parseISO('2016-01-05'))
+    await services.checkService.check(id1, parseISO('2016-01-06'))
+    // await services.checkService.check(id1, parseISO('2016-01-07'))
+    await services.checkService.check(id1, parseISO('2016-01-08'))
+    // await services.checkService.check(id0, parseISO('2016-01-09'))
+    await services.checkService.check(id0, parseISO('2016-01-10'))
 
     await api(
       new Req({

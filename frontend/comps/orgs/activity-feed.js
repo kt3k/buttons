@@ -3,7 +3,7 @@ const api = require('../../util/api')
 const { createProfilePath } = require('../../util/path')
 const genel = require('genel')
 const { CHECKED, BUTTON_CREATED } = require('../../const/sign')
-const distanceInWords = require('date-fns/distance_in_words')
+const formatDistance = require('date-fns/formatDistance')
 
 @component('activity-feed')
 class ActivityFeed {
@@ -85,7 +85,7 @@ class ActivityFeed {
    * @return {string} The html
    */
   static createDateHtml (date) {
-    const distance = distanceInWords(new Date(), Date.parse(date), {
+    const distance = formatDistance(new Date(), Date.parse(date), {
       addSuffix: true
     })
 

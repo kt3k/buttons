@@ -58,7 +58,7 @@
 # api
 > Serves the api (for local dev)
 
-    now dev --port 3004
+    now dev --listen 3004
 
 # deploy
 > Deploys the server to zeit now

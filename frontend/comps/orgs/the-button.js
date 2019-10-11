@@ -47,7 +47,7 @@ class TheButton {
     this.setLoading()
 
     await api('POST', `/users/self/buttons/${this.id}/uncheck`, {
-      d: format(new Date(), 'YYYY-MM-DD')
+      d: format(new Date(), 'yyyy-MM-dd')
     })
 
     this.toggleCheck(false)
@@ -58,7 +58,7 @@ class TheButton {
     this.setLoading()
 
     await api('POST', `/users/self/buttons/${this.id}/check`, {
-      d: format(new Date(), 'YYYY-MM-DD')
+      d: format(new Date(), 'yyyy-MM-dd')
     })
 
     this.toggleCheck(true)

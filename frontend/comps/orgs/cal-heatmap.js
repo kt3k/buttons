@@ -1,7 +1,7 @@
 const { component, wired } = require('capsid')
 const Cal = require('cal-heatmap')
-const subMonths = require('date-fns/sub_months')
-const parse = require('date-fns/parse')
+const subMonths = require('date-fns/subMonths')
+const parseISO = require('date-fns/parseISO')
 
 @component('cal-heatmap')
 class CalHeatmap {
@@ -69,7 +69,7 @@ class CalHeatmap {
       const count = record.checks.filter(check => buttonIds[check.buttonId])
         .length
       if (count > 0) {
-        data[parse(record.date).valueOf() / 1000] = count
+        data[parseISO(record.date).valueOf() / 1000] = count
       }
     })
 

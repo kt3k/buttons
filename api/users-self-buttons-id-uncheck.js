@@ -1,7 +1,7 @@
 const { ApiError, wrap } = require('./util')
 const { verifyToken } = require('./util/jwt')
 const { isValidDateStr } = require('../util/date')
-const { parse } = require('date-fns')
+const { parseISO } = require('date-fns')
 const { send, match, json } = require('./util/micro')
 const {
   CODE_NOT_FOUND,
@@ -42,7 +42,7 @@ async function post (req, res) {
     throw new ApiError(`Bad date: ${d}`, CODE_BAD_REQUEST, 400)
   }
 
-  await checkService.uncheck(button.id, parse(d))
+  await checkService.uncheck(button.id, parseISO(d))
 
   send(res, 204, '')
 }

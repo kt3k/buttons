@@ -44,7 +44,7 @@ class MainButtonsArea {
   }
 
   async fetchChecks (displayId) {
-    const today = format(new Date(), 'YYYY-MM-DD')
+    const today = format(new Date(), 'yyyy-MM-dd')
     const { data: checks } = await api(
       'GET',
       `/users/${displayId}/checks?d=${today}`

@@ -1,6 +1,6 @@
 const { describe, it } = require('kocha')
 const assert = require('assert')
-const { parse, startOfToday } = require('date-fns')
+const { parseISO, startOfToday } = require('date-fns')
 const mongoose = require('mongoose')
 
 const { Check, DailyCheckRecord } = require('..')
@@ -19,22 +19,22 @@ describe('CheckRepository', () => {
       const id1 = 'dummy-bid1'
       const buttonIds = [id0, id1]
 
-      await service.check(id0, parse('2018-01-05'))
-      await service.check(id0, parse('2018-01-06'))
-      await service.check(id0, parse('2018-01-07'))
-      await service.check(id0, parse('2018-01-08'))
-      await service.check(id0, parse('2018-01-09'))
+      await service.check(id0, parseISO('2018-01-05'))
+      await service.check(id0, parseISO('2018-01-06'))
+      await service.check(id0, parseISO('2018-01-07'))
+      await service.check(id0, parseISO('2018-01-08'))
+      await service.check(id0, parseISO('2018-01-09'))
 
-      await service.check(id1, parse('2018-01-05'))
-      // await service.check(id1, parse('2018-01-06'))
-      await service.check(id1, parse('2018-01-07'))
-      // await service.check(id1, parse('2018-01-08'))
-      await service.check(id1, parse('2018-01-09'))
+      await service.check(id1, parseISO('2018-01-05'))
+      // await service.check(id1, parseISO('2018-01-06'))
+      await service.check(id1, parseISO('2018-01-07'))
+      // await service.check(id1, parseISO('2018-01-08'))
+      await service.check(id1, parseISO('2018-01-09'))
 
       const records = await repository.getByButtonIdsAndDateRange(
         buttonIds,
-        parse('2018-01-06'),
-        parse('2018-01-08')
+        parseISO('2018-01-06'),
+        parseISO('2018-01-08')
       )
 
       assert(Array.isArray(records))

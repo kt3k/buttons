@@ -2,7 +2,7 @@ const { describe, it } = require('kocha')
 const assert = require('assert')
 const Req = require('mock-req')
 const Res = require('mock-res')
-const { parse } = require('date-fns')
+const { parseISO } = require('date-fns')
 const { userRepository, checkRepository } = require('./util/services')
 const checkApi = require('./users-self-buttons-id-check')
 const uncheckApi = require('./users-self-buttons-id-uncheck')
@@ -29,7 +29,7 @@ describe('POST /users/self/buttons/:id/check', () => {
 
     const checks = await checkRepository.getByButtonIdsAndDate(
       button.id,
-      parse(d)
+      parseISO(d)
     )
 
     assert.strictEqual(res.statusCode, 204)
@@ -70,7 +70,7 @@ describe('POST /users/self/buttons/:id/uncheck', () => {
 
     const checks = await checkRepository.getByButtonIdsAndDate(
       button.id,
-      parse(d)
+      parseISO(d)
     )
 
     assert.strictEqual(res1.statusCode, 204)

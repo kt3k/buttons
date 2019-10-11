@@ -1,6 +1,6 @@
 const { ApiError, wrap } = require('./util')
 const { isValidDateStr } = require('../util/date')
-const { parse } = require('date-fns')
+const { parseISO } = require('date-fns')
 const { verifyToken } = require('./util/jwt')
 const { send, match, json } = require('./util/micro')
 const {
@@ -43,7 +43,7 @@ async function post (req, res) {
     throw new ApiError(`Bad format date: ${d}`, CODE_BAD_REQUEST, 400)
   }
 
-  const checkPromise = checkService.check(button.id, parse(d))
+  const checkPromise = checkService.check(button.id, parseISO(d))
   const activityPromise = activityService.createPushActivity(user, button)
 
   await Promise.all([checkPromise, activityPromise])
