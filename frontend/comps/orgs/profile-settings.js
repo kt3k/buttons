@@ -5,9 +5,10 @@ const api = require('../../util/api')
 @component('profile-settings')
 class ProfileSettings {
   @wired('input[name="display-name"]')
-  get displayNameInput () {}
+  displayNameInput
+
   @wired('.display-name-save-button')
-  get displayNameSaveButton () {}
+  displayNameSaveButton
 
   __mount__ () {
     this.el.innerHTML = `
@@ -65,7 +66,7 @@ class ProfileSettings {
     this.startLoading(this.displayNameSaveButton)
     const displayName = this.displayNameInput.value
     try {
-      await api('PUT', `/users/self`, { displayName })
+      await api('PUT', '/users/self', { displayName })
     } catch (e) {
       alert("something's wrong")
     }

@@ -6,7 +6,7 @@ const api = require('../../util/api')
 @component('main-buttons-area')
 class MainButtonsArea {
   @wired('.button-area')
-  get buttonArea () {}
+  buttonArea
 
   __mount__ () {
     this.el.innerHTML = `
@@ -24,6 +24,7 @@ class MainButtonsArea {
 
     const checks = await this.fetchChecks(user.displayId)
 
+    // eslint-disable-next-line
     for (const button of user.buttons) {
       const check = checks.find(check => check.buttonId === button.id)
       this.createTheButton(button, check)

@@ -5,8 +5,7 @@ const parse = require('date-fns/parse')
 
 @component('cal-heatmap')
 class CalHeatmap {
-  @wired('.cal-heatmap')
-  get calHeatmap () {}
+  @wired('.cal-heatmap') calHeatmap
 
   __mount__ () {
     this.el.innerHTML = `

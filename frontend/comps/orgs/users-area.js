@@ -5,10 +5,10 @@ const { createProfilePath } = require('../../util/path')
 @component('users-area')
 class UsersArea {
   @wired('.user-list')
-  get userList () {}
+  userList
 
   @wired('.user-count')
-  get userCountLabel () {}
+  userCountLabel
 
   async __mount__ () {
     const { data: users } = await api('GET', '/users')

@@ -3,13 +3,12 @@ const api = require('../../util/api')
 
 @component('button-settings')
 class ButtonSettings {
-  @wired('h2')
-  get titleArea () {}
-  @wired('.single-settings-area')
-  get singleSettingsArea () {}
+  @wired('h2') titleArea
+  @wired('.single-settings-area') singleSettingsArea
 
   async __mount__ () {
-    this.el.innerHTML = `<button class="button is-loading is-white">Loading</button>`
+    this.el.innerHTML =
+      '<button class="button is-loading is-white">Loading</button>'
 
     const { data: buttons } = await api('GET', '/users/self/buttons')
 

@@ -17,10 +17,10 @@ insertCss(`
 @component('the-button')
 class TheButton {
   @wired('.check-button')
-  get checkButton () {}
+  checkButton
 
   @wired('.sign-button')
-  get signButton () {}
+  signButton
 
   __mount__ () {
     this.el.innerHTML = `

@@ -15,7 +15,7 @@ insertCss(`
 @component('user-heatmap')
 class UserHeatmap {
   @wired.component('cal-heatmap')
-  get heatmap () {}
+  heatmap
 
   __mount__ () {
     this.filterButtonIds = new Set()

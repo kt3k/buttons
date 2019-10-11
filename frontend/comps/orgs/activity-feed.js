@@ -7,8 +7,7 @@ const distanceInWords = require('date-fns/distance_in_words')
 
 @component('activity-feed')
 class ActivityFeed {
-  @wired('.activity-list')
-  get list () {}
+  @wired('.activity-list') list
 
   async __mount__ () {
     const { data: activities } = await api('GET', '/activities/recent')

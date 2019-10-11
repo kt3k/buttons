@@ -11,7 +11,7 @@ const { Action } = require('../const')
 })
 class Store {
   @dispatches(Action.REQUEST_AUTH)
-  __mount__ () {}
+  async __mount__ () {}
 
   @action(Action.AUTH_READY)
   @notifies(Action.AUTH_READY, '.auth-observer')

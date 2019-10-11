@@ -62,7 +62,7 @@ describe('GET /users/self', () => {
     await api(
       new Req({
         method: 'GET',
-        url: `/users/self?=abc`,
+        url: '/users/self?=abc',
         headers
       }),
       res

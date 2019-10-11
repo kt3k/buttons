@@ -5,7 +5,7 @@ const User = require('../../../domain/user')
 @component('set-id-panel')
 class SetIdPanel {
   @wired('input')
-  get input () {}
+  input
 
   @on.click.at('button')
   async requestApi () {

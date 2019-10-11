@@ -27,27 +27,31 @@ insertCss(`
 @component('user-profile')
 class UserProfile {
   @wired('.user-picture')
-  get picture () {}
+  picture
+
   @wired('.user-display-name')
-  get displayNameLabel () {}
+  displayNameLabel
+
   @wired('.user-display-id')
-  get displayIdLabel () {}
+  displayIdLabel
 
   @wired.all('.check-button')
-  get checkButtons () {}
+  checkButtons
+
   @wired.all('.sign-button')
-  get signButtons () {}
+  signButtons
 
   @wired.all(`.check-button.${SELECTED_CLASS}`)
-  get selectedCheckButtons () {}
+  selectedCheckButtons
+
   @wired.all(`.sign-button.${SELECTED_CLASS}`)
-  get selectedSignButtons () {}
+  selectedSignButtons
 
   @wired.component('user-heatmap')
-  get userHeatmap () {}
+  userHeatmap
 
   @wired('.user-profile-buttons-area')
-  get buttonsArea () {}
+  buttonsArea
 
   async __mount__ () {
     const id = getDisplayId(location, false)
@@ -133,8 +137,8 @@ class UserProfile {
               <div class="buttons has-addons">
                 <span class="button sign-button"></span>
                 <span class="button check-button" data-button-id="${
-  button.id
-}"></span>
+                  button.id
+                }"></span>
               </div>
             </div>
           </div>

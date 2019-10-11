@@ -4,15 +4,19 @@ const api = require('../../util/api')
 @component('single-button-settings')
 class SingleButtonSettings {
   @wired('.button-id')
-  get idLabel () {}
+  idLabel
+
   @wired('[name="name"]')
-  get nameInput () {}
+  nameInput
+
   @wired('[name="description"]')
-  get descriptionTextarea () {}
+  descriptionTextarea
+
   @wired('.save-button')
-  get saveButton () {}
+  saveButton
+
   @wired('.delete-button')
-  get deleteButton () {}
+  deleteButton
 
   __mount__ () {
     this.el.innerHTML = `
