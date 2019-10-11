@@ -1,4 +1,4 @@
-const { ApiError, wrap } = require('./util')
+const { ApiError, wrap, getPathname } = require('./util')
 const { verifyToken } = require('./util/jwt')
 const {
   userRepository,
@@ -12,10 +12,7 @@ async function put (req, res) {
   const { sub: authId } = await verifyToken(req)
   const user = await userRepository.getByAuthId(authId)
 
-  const { id } = match(
-    '/users/self/buttons/:id',
-    require('url').parse(req.url).pathname
-  )
+  const { id } = match('/users/self/buttons/:id', getPathname(req.url))
   const [button] = await buttonRepository.getByIds([id])
 
   if (!button) {
@@ -41,10 +38,7 @@ async function del (req, res) {
   const { sub: authId } = await verifyToken(req)
   const user = await userRepository.getByAuthId(authId)
 
-  const { id } = match(
-    '/users/self/buttons/:id',
-    require('url').parse(req.url).pathname
-  )
+  const { id } = match('/users/self/buttons/:id', getPathname(req.url))
   const [button] = await buttonRepository.getByIds([id])
 
   if (!button) {

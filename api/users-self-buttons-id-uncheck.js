@@ -1,4 +1,4 @@
-const { ApiError, wrap } = require('./util')
+const { ApiError, wrap, getPathname } = require('./util')
 const { verifyToken } = require('./util/jwt')
 const { isValidDateStr } = require('../util/date')
 const { parseISO } = require('date-fns')
@@ -22,10 +22,7 @@ async function post (req, res) {
     throw new ApiError('The user is not found', CODE_NOT_FOUND, 404)
   }
 
-  const { id } = match(
-    '/users/self/buttons/:id/uncheck',
-    require('url').parse(req.url).pathname
-  )
+  const { id } = match('/users/self/buttons/:id/uncheck', getPathname(req.url))
   const [button] = await buttonRepository.getByIds([id])
 
   if (!button) {

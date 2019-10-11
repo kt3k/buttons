@@ -1,13 +1,12 @@
 const { parseISO, format, differenceInDays } = require('date-fns')
 const { isValidDateStr } = require('../util/date')
-const { ApiError, wrap } = require('./util')
+const { ApiError, wrap, getPathname } = require('./util')
 const { query, match, send } = require('./util/micro')
 const { checkRepository, userRepository } = require('./util/services')
 const { CODE_BAD_REQUEST } = require('./util/error-code')
-const url = require('url')
 
 async function get (req, res) {
-  const { id } = match('/users/:id/checks', url.parse(req.url).pathname)
+  const { id } = match('/users/:id/checks', getPathname(req.url))
   const { from, to, d } = query(req)
 
   const user = await userRepository.getByDisplayId(id)

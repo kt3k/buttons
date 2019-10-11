@@ -1,13 +1,15 @@
-const { ApiError, userToUserDtoWithButtons, wrap } = require('./util')
+const {
+  ApiError,
+  userToUserDtoWithButtons,
+  wrap,
+  getPathname
+} = require('./util')
 const { userRepository } = require('./util/services')
 const { match, send } = require('./util/micro')
 const { CODE_NOT_FOUND } = require('./util/error-code')
 
 async function get (req, res) {
-  const { id: displayId } = match(
-    '/users/:id',
-    require('url').parse(req.url).pathname
-  )
+  const { id: displayId } = match('/users/:id', getPathname(req.url))
 
   const user = await userRepository.getByDisplayId(displayId)
 

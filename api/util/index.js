@@ -1,5 +1,6 @@
 const { send } = require('./micro')
 const { CODE_INTERNAL_SERVER_ERROR } = require('./error-code')
+const { getPathname } = require('./url')
 
 class ApiError extends Error {
   /**
@@ -121,3 +122,5 @@ exports.wrap = routes =>
       })
     )
   )
+
+exports.getPathname = getPathname
