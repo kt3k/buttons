@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Daily checklist buttons",
   "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "test": "saku test",
     "build-for-netlify": "cross-env API_ROOT=https://buttons-api.kt3k.now.sh saku prod-build",
