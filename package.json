@@ -23,7 +23,7 @@
     "body-parser": "^1.18.3",
     "date-fns": "^2.16.1",
     "jsonwebtoken": "^8.3.0",
-    "jwks-rsa": "^1.12.1",
+    "jwks-rsa": "^1.12.2",
     "micro": "^9.3.3",
     "micro-match": "^1.0.0",
     "micro-query": "^0.3.0",
