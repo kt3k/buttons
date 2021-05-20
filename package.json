@@ -27,7 +27,7 @@
     "micro": "^9.3.3",
     "micro-match": "^1.0.0",
     "micro-query": "^0.3.0",
-    "mongoose": "~5.12.9",
+    "mongoose": "~5.12.10",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
