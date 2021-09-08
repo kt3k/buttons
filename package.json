@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/kt3k/buttons#readme",
   "dependencies": {
-    "axios": "^0.21.3",
+    "axios": "^0.21.4",
     "body-parser": "^1.18.3",
     "date-fns": "^2.23.0",
     "jsonwebtoken": "^8.3.0",
