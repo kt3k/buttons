@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "^1.20.0",
-    "date-fns": "^2.28.0",
+    "date-fns": "^2.29.1",
     "jsonwebtoken": "^8.3.0",
     "jwks-rsa": "^1.12.3",
     "micro": "^9.4.0",
