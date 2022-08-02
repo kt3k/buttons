@@ -5718,10 +5718,10 @@ micro-query@^0.3.0:
   dependencies:
     qs "6.5.2"
 
-micro@^9.4.0:
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/micro/-/micro-9.4.0.tgz#b8cff951a562b42f2dc76ad155631a17dacca91b"
-  integrity sha512-F3uh5Ob+0896E1skflRvcY6Cpq6/sA0RB7exMl/IhQ2wbwL79aF+mDAyjDcKNhXKkJVEXhKZrPqOEFLXkJW9og==
+micro@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/micro/-/micro-9.4.1.tgz#3a7eedd96718d8569a324475cd1967441df4b3c7"
+  integrity sha512-Lpjcbp6Y9GJIfewxDfTmu9eW0rt0MGo+Gs1d3yJLFa7mhErtKkCngGhDbA/O1gqUjEwsHh+jWPg8BJ0Bx4AgFA==
   dependencies:
     arg "4.1.0"
     content-type "1.0.4"
