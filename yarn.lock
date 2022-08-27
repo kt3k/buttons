@@ -5706,10 +5706,10 @@ methods@^1.1.1:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-micro-match@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/micro-match/-/micro-match-1.0.2.tgz#598bf8728b1cf6b8116876e9d24eb6cd6cc9829b"
-  integrity sha512-XulFrfikQbCL4/IrgOzsgNboYqAvIsD16z2t8Gp7LW1fDfBrPkAcersScieMlZzy14b4hwBOVLZpmBpNNnODzg==
+micro-match@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/micro-match/-/micro-match-1.0.3.tgz#c2363e979509089563656dbbb06f77dcc14443a0"
+  integrity sha512-GXYjLys0vEWCeor70EzuRez3S9wZDXDk44Kjjp7alqak3XeLYemErqieCtH/wFTJTOGXDkBHmRzsjKzrdJI0hw==
 
 micro-query@^0.3.0:
   version "0.3.0"
